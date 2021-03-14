@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  background-color: #fff0df;
+  color: #1f1f1f;
+}
+
+a {
+  text-decoration: none;
+  color: #1f1f1f;
+}
+
+.header_container {
+  text-align: center;
+  padding: 2em 0 2em 0;
+  background-color: #f5b618;
+}
+
+.header_container__item {
+  margin: 0 1% 0 1%;
+  padding: 10px;
+  background-color: #fffffe;
+  border-radius: 10px;
+}
+
+.main_container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 60vw 40vw;
+      grid-template-columns: 60vw 40vw;
+  -ms-grid-rows: 25vh 30vh 30vh 20vh;
+      grid-template-rows: 25vh 30vh 30vh 20vh;
+      grid-template-areas: "calendar calendar" "todo deadlines" "notes deadlines" "habits habits";
+}
+
+.container {
+  border-radius: 20px;
+  margin: 1em;
+  padding: 0 1em 0 1em;
+  background-color: #fffffe;
+}
+
+.calendar_container {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: calendar;
+}
+
+.todo_container {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: todo;
+}
+
+.notes_container {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: notes;
+}
+
+.grafic_container {
+  grid-area: grafic;
+}
+
+.deadlines_container {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  grid-area: deadlines;
+}
+
+.habits_container {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: habits;
+}
+/*# sourceMappingURL=style.css.map */
