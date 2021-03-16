@@ -20,5 +20,6 @@
     "browserify-shim": "^3.8.14",
     "chart.js": "^2.9.4",
     "save": "^2.4.0"
-  }
+  },
+  "devDependencies": {}
 }

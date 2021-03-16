@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/assets/styles/style.css">
     <title>Planner Dashboard</title>
 </head>
-
 <body>
 
 <header class="header_container">
@@ -19,13 +18,19 @@
 </header>
 <main class="main_container">
     <div class="calendar_container container">
-        <h2 class="calendar_container__header">Calendar</h2>
+        <h2 class="calendar_container__header">Week</h2>
+        <div id="menu">
+            <span id="menu-navi">
+                <button id="prev" type="button" class="btn btn-default btn-sm move-day" data-action="move-prev" onclick="moveToPrevWeek()"><</button>
+                <button id="next" type="button" class="btn btn-default btn-sm move-day" data-action="move-next" onclick="moveToNextWeek()">></button>
+            </span>
+            <span id="renderRange" class="render-range"></span>
+        </div>
+        <br><br>
+        <div id="calendar"></div>
     </div>
     <div class="todo_container container">
         <h2 class="todo_container__header">To-do</h2>
-    </div>
-    <div class="grafic_container container">
-        <h2 class="grafic_container__header">Grafic</h2>
     </div>
     <div class="notes_container container">
         <h2 class="notes_container__header">Notes</h2>
@@ -35,8 +40,16 @@
     </div>
     <div class="habits_container container">
         <h2 class="habits_container__header">Habits</h2>
+        <week-calendar start-day="1" locale="es-MX"  disable-weekends="true" enable-dates='' selected-day="{{value}}"></week-calendar>
     </div>
 </main>
+
+
+<script src="https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js"></script>
+<script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script>
+<script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.js"></script>
+<script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script>
+<script src="/assets/script/calendar.js"></script>
 </body>
 
 </html>
