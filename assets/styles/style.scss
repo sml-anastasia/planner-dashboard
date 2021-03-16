@@ -1,0 +1,67 @@
+@import "./blocks/variables";
+
+body {
+    margin: 0;
+
+    background-color: $body_background;
+    color: $text_color;
+}
+
+a {
+    text-decoration: none;
+    color: $text_color;
+}
+
+.header_container {
+    text-align: center;
+    padding: 2em 0 2em 0;
+
+    background-color: $header_background;
+}
+
+.header_container__item {
+    margin:  0 1% 0 1%;
+    padding: 10px;
+
+    background-color: $block_background;
+    border-radius: 10px;
+}
+
+.main_container {
+    display: grid;
+    grid-template-columns: 60vw 40vw;
+    grid-template-rows: 25vh 30vh 30vh 20vh;
+    grid-template-areas: 
+    "calendar calendar"
+    "todo deadlines"
+    "notes deadlines"
+    "habits habits";
+}
+
+.container {
+    border-radius: 20px;
+    margin: 1em;
+    padding: 0 1em 0 1em;
+
+    background-color: $block_background;
+}
+
+.calendar_container {
+    grid-area: calendar;
+}
+.todo_container {
+    grid-area: todo;
+}
+.notes_container {
+    grid-area: notes;
+}
+.grafic_container {
+    grid-area: grafic;
+}
+.deadlines_container {
+    grid-area: deadlines;
+}
+.habits_container {
+    grid-area: habits;
+}
+
