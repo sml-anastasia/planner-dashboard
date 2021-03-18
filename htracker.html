@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #habit_box {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="habit_tracker_wrap">
+        <input type="text" id="habit_input" placeholder="Add habit here">
+        <div>
+            <button id="add_habit" onclick="addHabit()">+ habit</button>
+            <div id="habit_box"></div>
+        </div>
+    </div>
+    <script src="htracker.js"></script>
+
+</body>
+</html>
