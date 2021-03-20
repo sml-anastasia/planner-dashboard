@@ -5,14 +5,15 @@ let allHabits = [];
 
 document.addEventListener("DOMContentLoaded", function (event) {
     allHabits = JSON.parse(localStorage.getItem('habits'));
-    // if (allHabits != null) {
+        if (allHabits != null) {
         appendHabit();
-    // }
+    }
 }); 
-
+let newHabit = {};
+let habitName = document.getElementById("habit_input");
 function addHabit() {
-    let newHabit = {};
-    let habitName = document.getElementById("habit_input");
+   
+    
 
     if (habitName.value == ""){
         return alert("Please enter your habit");
@@ -21,29 +22,7 @@ function addHabit() {
     }
 
     allHabits.push(newHabit);
-
     appendHabit();
-
-    // habitsNamesList.push(habitName);
-
-    // let habitString = "";
-    // i=0;
-    // for (habit of habitsNamesList){
-    //     habitString = `<p>${habitName}</p>
-    //     <form>
-    //     <input type="checkbox" name="checkbox${i}">
-    //     <input type="checkbox" name="checkbox${i}">
-    //     <input type="checkbox" name="checkbox${i}">
-    //     <input type="checkbox" name="checkbox${i}">
-    //     <input type="checkbox" name="checkbox${i}">
-    //     <input type="checkbox" name="checkbox${i}">
-    //     <input type="checkbox" name="checkbox${i}">
-    //     </form>`
-    //     i++;
-    // }
-    // habitsInputs.push(habitString);
-    // document.getElementById("habit_box").innerHTML += habitString;
-    // localStorage.setItem("habit", JSON.stringify(habitsInputs));
 }
 
 function appendHabit(){
@@ -63,16 +42,20 @@ allHabits.map(habit => {
     let habitForm = document.createElement('form');
     // habitForm.innerText = note.note;
     habitForm.classList = 'habit-form';
+    habitForm.setAttribute("onchange", "isChecked()");///////////
     // let habitDelete = document.createElement('img');
     // habitDelete.src = 'assets/images/note-icon-delete.svg';
     // habitDelete.classList.add('habit-delete');
     let habitCheck;
     for (i=0; i<7; i++){
         habitCheck = document.createElement('input');
-        habitCheck.type = 'checkbox';
-        habitCheck.name = `checkbox-${habit.name}`; 
+        habitCheck.setAttribute("type", "checkbox");
+        habitCheck.setAttribute("name",`checkbox-${habit.name}`);
+        // habitCheck.type = 'checkbox';
+        // habitCheck.name = `checkbox-${habit.name}`; 
         habitForm.appendChild(habitCheck);
     }
+
 
     habitItem.appendChild(habitTitle);
     habitItem.appendChild(habitForm);
@@ -81,4 +64,18 @@ allHabits.map(habit => {
     // getDeleteButtons();
     localStorage.setItem('habits', JSON.stringify(allHabits));
     }) 
+}
+let checkboxes = [];
+
+function isChecked() {
+    let inputs = document.getElementsByName("checkbox-"+ habitName.value);
+    for (let input of inputs) {
+        if (input.checked) {
+            checkboxes.push("1");
+        } else {
+            checkboxes.push("0");
+        }
+    }
+    console.log(habitName.value);
+    console.log(checkboxes);
 }
