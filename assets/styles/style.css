@@ -1,3 +1,112 @@
+#add-box__note-title {
+  width: 10rem;
+  margin-bottom: 5%;
+  font-family: "Mulish", sans-serif;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #f9f9fb;
+  color: #f9f9fb;
+}
+
+#add-box__note-input {
+  width: 15rem;
+  height: 5rem;
+  margin-bottom: 5%;
+  font-family: "Mulish", sans-serif;
+  background-color: transparent;
+  border: 2px dashed #f9f9fb;
+  border-radius: 8px;
+  overflow-y: scroll;
+  color: #f9f9fb;
+}
+
+.add-box__title {
+  font-family: "Playfair Display", serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 3rem;
+  color: #f9f9fb;
+}
+
+#add-box__button {
+  width: 50px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: rgba(242, 208, 92, 0.8);
+  border-radius: 50px;
+  border: none;
+}
+
+.btn__link {
+  margin: auto;
+}
+
+#notes-box__button_clear,
+.submit {
+  height: 2rem;
+  background: #f9f9fb;
+  border: none;
+  border-radius: 8px;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1rem;
+  color: #7d7987;
+}
+
+#notes-box__button_clear {
+  width: 7rem;
+  margin: 2% 5% 0 auto;
+}
+
+.submit {
+  width: 5rem;
+  margin-left: auto;
+}
+
+.modal {
+  position: fixed;
+  top: -20%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.5rem;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal:target {
+  opacity: 1;
+  top: 0;
+  pointer-events: auto;
+}
+
+.modal-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  width: 400px;
+  margin: 10% auto;
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.192);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.192);
+  padding: 2rem;
+  border-radius: 5px;
+  background: rgba(242, 208, 92, 0.8);
+}
+
 body {
   margin: 0;
   background-color: #fff0df;
@@ -53,9 +162,13 @@ a {
 }
 
 .notes_container {
-  -ms-grid-row: 3;
+  -ms-grid-row: 2;
   -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: notes;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: 'title btn' 'notes notes';
 }
 
 .grafic_container {

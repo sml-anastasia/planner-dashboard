@@ -5,38 +5,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
     <title>Planner Dashboard</title>
 </head>
 
 <body>
 
-<header class="header_container">
-    <a class="header_container__item" href="">Month</a>
-    <a class="header_container__item" href="">Week</a>
-    <a class="header_container__item" href="">Tracker</a>
-    <a class="header_container__item" href="">Statistics</a>
-</header>
-<main class="main_container">
-    <div class="calendar_container container">
-        <h2 class="calendar_container__header">Calendar</h2>
-    </div>
-    <div class="todo_container container">
-        <h2 class="todo_container__header">To-do</h2>
-    </div>
-    <div class="grafic_container container">
-        <h2 class="grafic_container__header">Grafic</h2>
-    </div>
-    <div class="notes_container container">
-        <h2 class="notes_container__header">Notes</h2>
-    </div>
-    <div class="deadlines_container container">
-        <h2 class="deadlines_container__header">Deadlines</h2>
-    </div>
-    <div class="habits_container container">
-        <h2 class="habits_container__header">Habits</h2>
-    </div>
-</main>
+    <header class="header_container">
+        <a class="header_container__item" href="">Month</a>
+        <a class="header_container__item" href="">Week</a>
+        <a class="header_container__item" href="">Tracker</a>
+        <a class="header_container__item" href="">Statistics</a>
+    </header>
+    <main class="main_container">
+        <div class="calendar_container container">
+            <h2 class="calendar_container__header">Calendar</h2>
+        </div>
+        <div class="todo_container container">
+            <h2 class="todo_container__header">To-do</h2>
+        </div>
+        <div class="grafic_container container">
+            <h2 class="grafic_container__header">Grafic</h2>
+        </div>
+        <section class="notes_container container">
+            <h2 class="notes_container__header">Notes</h2>
+            <div id="add-box__button">
+                <a href="#myModal" class="btn__link">+</a>
+            </div>
+            <div id="notes"></div>
+        </section>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <form class="noteForm">
+                    <!-- инпут для ввода заголовка заметки -->
+                    <input name="note-title" id="add-box__note-title" placeholder="title"></input>
+                    <!-- поле ввода текста заметки -->
+                    <textarea name="note" id="add-box__note-input" placeholder="write down your note"></textarea>
+                    <button type="submit" name="submit" class="submit">add</button>
+                    <div>
+                        <a href="#close" class="cancel">cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="deadlines_container container">
+            <h2 class="deadlines_container__header">Deadlines</h2>
+        </div>
+        <div class="habits_container container">
+            <h2 class="habits_container__header">Habits</h2>
+        </div>
+    </main>
+    <script src="assets/script/index-notes.js"></script>
 </body>
 
 </html>

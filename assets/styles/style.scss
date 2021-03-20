@@ -1,4 +1,5 @@
 @import "./blocks/variables";
+@import "./blocks/notes";
 
 body {
     margin: 0;
@@ -20,7 +21,7 @@ a {
 }
 
 .header_container__item {
-    margin:  0 1% 0 1%;
+    margin: 0 1% 0 1%;
     padding: 10px;
 
     background-color: $block_background;
@@ -31,11 +32,11 @@ a {
     display: grid;
     grid-template-columns: 60vw 40vw;
     grid-template-rows: 25vh 30vh 30vh 20vh;
-    grid-template-areas: 
-    "calendar calendar"
-    "todo deadlines"
-    "notes deadlines"
-    "habits habits";
+    grid-template-areas:
+        "calendar calendar"
+        "todo deadlines"
+        "notes deadlines"
+        "habits habits";
 }
 
 .container {
@@ -49,19 +50,27 @@ a {
 .calendar_container {
     grid-area: calendar;
 }
+
 .todo_container {
     grid-area: todo;
 }
+
 .notes_container {
     grid-area: notes;
+    display: grid;
+    grid-template-areas:
+        'title btn'
+        'notes notes';
 }
+
 .grafic_container {
     grid-area: grafic;
 }
+
 .deadlines_container {
     grid-area: deadlines;
 }
+
 .habits_container {
     grid-area: habits;
 }
-
