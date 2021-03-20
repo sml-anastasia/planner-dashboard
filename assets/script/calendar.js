@@ -44,9 +44,25 @@ function generateDashboard(date) {
     let dashboardDiv = `<div class="todo_container container">
         <h2 class="todo_container__header">To-do</h2>
     </div>
-    <div class="notes_container container">
-        <h2 class="notes_container__header">Notes</h2>
-    </div>
+    <section class="notes_container container">
+                <h2 class="notes_container__header">Notes</h2>
+                <div id="add-box__button">
+                    <a href="#myModal" class="btn__link">+</a>
+                </div>
+                <div id="notes"></div>
+            </section>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <form class="noteForm">
+                        <input name="note-title" id="add-box__note-title" placeholder="title"></input>
+                        <textarea name="note" id="add-box__note-input" placeholder="write down your note"></textarea>
+                        <button type="button" name="submit" class="submit" onclick="addNote();">add</button>
+                        <div>
+                            <a href="#close" class="cancel">cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
     <div class="deadlines_container container">
         <h2 class="deadlines_container__header">Deadlines</h2>
         <div id="deadline_bar"></div>

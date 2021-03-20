@@ -12,12 +12,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 
-noteForm.addEventListener('submit', (event) => {
-    addNote(event);
-});
+// noteForm.addEventListener('submit', (event) => {
+//     addNote(event);
+// });
 
-function addNote(event) {
-    event.preventDefault();
+function addNote() {
+    // event.preventDefault();
 
     let newNote = {};
     
