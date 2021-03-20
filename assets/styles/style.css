@@ -131,14 +131,14 @@ a {
   border-radius: 10px;
 }
 
-.main_container {
+#dashboard {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 60vw 40vw;
       grid-template-columns: 60vw 40vw;
-  -ms-grid-rows: 25vh 30vh 30vh 20vh;
-      grid-template-rows: 25vh 30vh 30vh 20vh;
-      grid-template-areas: "calendar calendar" "todo deadlines" "notes deadlines" "habits habits";
+  -ms-grid-rows: 30vh 30vh 20vh;
+      grid-template-rows: 30vh 30vh 20vh;
+      grid-template-areas: "todo deadlines" "notes deadlines" "habits habits";
 }
 
 .container {
@@ -149,14 +149,38 @@ a {
 }
 
 .calendar_container {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
   grid-area: calendar;
+  padding: 1em;
+}
+
+.calendar_container #menu {
+  display: inline;
+}
+
+.calendar_container__header {
+  display: inline;
+}
+
+.tui-full-calendar-container {
+  width: 80vw;
+}
+
+.tui-full-calendar-dayname-leftmargin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.tui-full-calendar-dayname-container {
+  height: 10vh;
 }
 
 .todo_container {
-  -ms-grid-row: 2;
+  -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: todo;
 }
@@ -176,14 +200,14 @@ a {
 }
 
 .deadlines_container {
-  -ms-grid-row: 2;
+  -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   -ms-grid-column: 2;
   grid-area: deadlines;
 }
 
 .habits_container {
-  -ms-grid-row: 4;
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: habits;
