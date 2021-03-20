@@ -37,10 +37,21 @@
   background: rgba(242, 208, 92, 0.8);
   border-radius: 50px;
   border: none;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: btn;
 }
 
 .btn__link {
   margin: auto;
+}
+
+#notes {
+  width: 100%;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: notes;
 }
 
 #notes-box__button_clear,
@@ -136,6 +147,9 @@ a {
   display: grid;
   -ms-grid-columns: 60vw 40vw;
       grid-template-columns: 60vw 40vw;
+  -ms-grid-rows: 25vh 30vh 30vh 20vh;
+      grid-template-rows: 25vh 30vh 30vh 20vh;
+      grid-template-areas: "calendar calendar" "todo deadlines" "notes deadlines" "habits habits";
   -ms-grid-rows: 30vh 30vh 20vh;
       grid-template-rows: 30vh 30vh 20vh;
       grid-template-areas: "todo deadlines" "notes deadlines" "habits habits";
@@ -149,6 +163,9 @@ a {
 }
 
 .calendar_container {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: calendar;
   padding: 1em;
 }
