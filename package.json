@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/sml-anastasia/team-1#readme",
   "dependencies": {
-    "browserify-shim": "^3.8.14",
+    "browserify": "^17.0.0",
     "chart.js": "^2.9.4",
     "progressbar.js": "^1.1.0",
     "requirejs": "^2.3.6",
