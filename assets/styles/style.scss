@@ -27,12 +27,11 @@ a {
     border-radius: 10px;
 }
 
-.main_container {
+#dashboard {
     display: grid;
     grid-template-columns: 60vw 40vw;
-    grid-template-rows: 25vh 30vh 30vh 20vh;
+    grid-template-rows: 30vh 30vh 20vh;
     grid-template-areas: 
-    "calendar calendar"
     "todo deadlines"
     "notes deadlines"
     "habits habits";
@@ -48,7 +47,26 @@ a {
 
 .calendar_container {
     grid-area: calendar;
+    padding: 1em;
+
+    #menu {
+        display: inline;
+    }
 }
+.calendar_container__header {
+    display: inline;
+}
+.tui-full-calendar-container {
+    width: 80vw;
+}
+.tui-full-calendar-dayname-leftmargin {
+    display: flex;
+    flex-direction: row;
+}
+.tui-full-calendar-dayname-container {
+    height: 10vh;
+}
+
 .todo_container {
     grid-area: todo;
 }
