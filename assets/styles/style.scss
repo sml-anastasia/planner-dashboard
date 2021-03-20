@@ -27,12 +27,11 @@ a {
     border-radius: 10px;
 }
 
-.main_container {
+#dashboard {
     display: grid;
     grid-template-columns: 60vw 40vw;
-    grid-template-rows: 13vh 30vh 30vh 20vh;
+    grid-template-rows: 30vh 30vh 20vh;
     grid-template-areas: 
-    "calendar calendar"
     "todo deadlines"
     "notes deadlines"
     "habits habits";
