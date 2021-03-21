@@ -12,12 +12,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 
-// noteForm.addEventListener('submit', (event) => {
-//     addNote(event);
-// });
+noteForm.addEventListener('submit', (event) => {
+    addNote(event);
+});
 
-function addNote() {
-    // event.preventDefault();
+function addNote(event) {
+    event.preventDefault();
 
     let newNote = {};
     
@@ -63,16 +63,17 @@ function appendNotes() {
         noteBox.appendChild(noteDelete);
         
         noteDiv.appendChild(noteBox);
-        getDeleteButtons();
+        getDeleteNoteButtons();
         localStorage.setItem('notes', JSON.stringify(noteList));
     })
 }
 
-function getDeleteButtons() {
+function getDeleteNoteButtons() {
     noteDeleteButtons = Array.from(document.querySelectorAll('.note-delete'));
     noteDeleteButtons.forEach(button => {
         let noteToDelete = button.previousSibling.previousSibling.innerText;
         button.addEventListener('click', () => {
+            
             deleteNote(noteToDelete);
         })
     })

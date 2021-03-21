@@ -1,0 +1,10 @@
+.habit_box {
+    height: auto;
+    overflow: scroll;
+    display: flex;
+    flex-direction: row;
+}
+
+.habit-item {
+    margin-right: 15px;
+}

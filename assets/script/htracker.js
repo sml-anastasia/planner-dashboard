@@ -9,20 +9,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
         appendHabit();
     }
 }); 
-let newHabit = {};
-let habitName = document.getElementById("habit_input");
+
 function addHabit() {
-   
-    
+    let newHabit = {};
+    let habitName = document.getElementById("habit_input");
 
     if (habitName.value == ""){
         return alert("Please enter your habit");
     } else {
         newHabit.name = habitName.value;
     }
-
-    allHabits.push(newHabit);
     appendHabit();
+    allHabits.push(newHabit);
 }
 
 function appendHabit(){
@@ -42,7 +40,7 @@ allHabits.map(habit => {
     let habitForm = document.createElement('form');
     // habitForm.innerText = note.note;
     habitForm.classList = 'habit-form';
-    habitForm.setAttribute("onchange", "isChecked()");///////////
+    // habitForm.setAttribute("onchange", "isChecked()");
     // let habitDelete = document.createElement('img');
     // habitDelete.src = 'assets/images/note-icon-delete.svg';
     // habitDelete.classList.add('habit-delete');
@@ -65,17 +63,17 @@ allHabits.map(habit => {
     localStorage.setItem('habits', JSON.stringify(allHabits));
     }) 
 }
-let checkboxes = [];
+// let checkboxes = [];
 
-function isChecked() {
-    let inputs = document.getElementsByName("checkbox-"+ habitName.value);
-    for (let input of inputs) {
-        if (input.checked) {
-            checkboxes.push("1");
-        } else {
-            checkboxes.push("0");
-        }
-    }
-    console.log(habitName.value);
-    console.log(checkboxes);
-}
+// function isChecked() {
+//     let inputs = document.getElementsByName("checkbox-"+ habitName.value);
+//     for (let input of inputs) {
+//         if (input.checked) {
+//             checkboxes.push("1");
+//         } else {
+//             checkboxes.push("0");
+//         }
+//     }
+//     console.log(habitName.value);
+//     console.log(checkboxes);
+// }
