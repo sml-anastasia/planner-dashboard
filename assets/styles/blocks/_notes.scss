@@ -1,7 +1,14 @@
+* {
+    font-family: $defaultFont;
+}
+
+h2 {
+    font-family: $titleFont;
+}
+
 #add-box__note-title {
     width: 10rem;
     margin-bottom: 5%;
-    font-family: "Mulish", sans-serif;
     background-color: transparent;
     border: none;
     border-bottom: 2px solid #f9f9fb;
@@ -12,7 +19,6 @@
     width: 15rem;
     height: 5rem;
     margin-bottom: 5%;
-    font-family: "Mulish", sans-serif;
     background-color: transparent;
     border: 2px dashed #f9f9fb;
     border-radius: 8px;
@@ -21,7 +27,7 @@
 }
 
 .add-box__title {
-    font-family: "Playfair Display", serif;
+    font-family: $titleFont;
     font-weight: normal;
     font-style: normal;
     font-size: 3rem;
@@ -29,10 +35,11 @@
 }
 
 #add-box__button {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    margin: auto 0 auto auto;
     display: flex;
-    background: rgba(242, 208, 92, 0.8);
+    background: $header_background;
     border-radius: 50px;
     border: none;
     grid-area: btn;
@@ -45,15 +52,14 @@
 #notes {
     width: 100%;
     grid-area: notes;
+    overflow: scroll;
 }
 
-#notes-box__button_clear,
 .submit {
     height: 2rem;
     background: #f9f9fb;
     border: none;
     border-radius: 8px;
-    font-family: "Playfair Display", serif;
     font-weight: 600;
     font-style: normal;
     font-size: 1rem;
@@ -102,5 +108,24 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.192);
     padding: 2rem;
     border-radius: 5px;
-    background: rgba(242, 208, 92, 0.8);
+    background: $header_background;
+}
+
+.note-item {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.note-title,
+.note-text,
+.note-delete {
+    margin-right: 15px;
+    color: $text_color;
+}
+
+.note-title {
+    font-weight: 700;
+    color: $header_background
 }

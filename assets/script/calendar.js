@@ -35,12 +35,25 @@ calendar.on('clickDayname', function(event) {
 });
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    generateDashboard(today);
+    generateDashboard(getQueryParams('date'));
 });
 
+function getQueryParams(qs) {
+    qs = qs.split('+').join(' ');
 
+    var params = {},
+        tokens,
+        re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs)) {
+        params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+}
 
 function generateDashboard(date) {
+    console.log(date);
     let dashboardDiv = `<div class="todo_container container">
         <h2 class="todo_container__header">To-do</h2>
     </div>

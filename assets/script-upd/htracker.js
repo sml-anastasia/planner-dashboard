@@ -8,10 +8,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
         if (allHabits != null) {
         appendHabit();
     }
+
+    appendHabit();
 }); 
 
 function addHabit() {
-    let newHabit = {};
+    let newHabit = {checks:[false,false,false,false,false,false,false]};
     let habitName = document.getElementById("habit_input");
 
     if (habitName.value == ""){
@@ -31,7 +33,12 @@ function appendHabit(){
 })
 }
 
-allHabits.map(habit => {
+    let date = getParameterByName('date');
+    
+    //console.log(myPlanner.find(x=>x.date==date).habits);
+
+    if(myPlanner.find(x=>x.date==date)) {
+    myPlanner.find(x=>x.date==date).habits.map(habit => {
     let habitItem = document.createElement('div');
     habitItem.classList = 'habit-item';
     let habitTitle = document.createElement('span');
@@ -45,10 +52,12 @@ allHabits.map(habit => {
     // habitDelete.src = 'assets/images/note-icon-delete.svg';
     // habitDelete.classList.add('habit-delete');
     let habitCheck;
-    for (i=0; i<7; i++){
+    for (let i=0; i<7; i++){
         habitCheck = document.createElement('input');
         habitCheck.setAttribute("type", "checkbox");
         habitCheck.setAttribute("name",`checkbox-${habit.name}`);
+        if (habit.checks[i]) habitCheck.setAttribute("checked", "checked");
+        //habitCheck.onclick = 
         // habitCheck.type = 'checkbox';
         // habitCheck.name = `checkbox-${habit.name}`; 
         habitForm.appendChild(habitCheck);
@@ -59,9 +68,11 @@ allHabits.map(habit => {
     habitItem.appendChild(habitForm);
     
     habitBox.appendChild(habitItem);
+    
     // getDeleteButtons();
     localStorage.setItem('habits', JSON.stringify(allHabits));
-    }) 
+    }) ;
+    }
 }
 // let checkboxes = [];
 
