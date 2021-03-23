@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <title>Planner Dashboard copy</title>
+</head>
+
+<body>
+    <header class="header_container">
+        <!--<a class="header_container__item" href="">Month</a>-->
+        <a class="header_container__item" href="">Week</a>
+        <a class="header_container__item" href="">Tracker</a>
+        <a class="header_container__item" href="">Statistics</a>
+    </header>
+    <main class="main_container">
+        <div class="calendar_container container">
+            <h2 class="calendar_container__header">Week</h2>
+            <div id="menu">
+                <span id="menu-navi">
+                    <button id="prev" type="button" class="btn btn-default btn-sm move-day" data-action="move-prev"
+                        onclick="moveToPrevWeek()">
+                        < </button>
+                            <button id="next" type="button" class="btn btn-default btn-sm move-day"
+                                data-action="move-next" onclick="moveToNextWeek()">></button>
+                </span>
+                <span id="renderRange" class="render-range"></span>
+            </div>
+            <br><br>
+            <div id="calendar"></div>
+        </div>
+
+        <div id="dashboard">
+
+            <section class="todo_container container">
+                <h2 class="todo_container__header">To-do</h2>
+                <div>
+                    <form>
+                        <input type="text" class="todo-name">
+                        <button type="submit" name="submit" class="todo-btn">
+                            add
+                        </button>
+                    </form>
+                </div>
+                <div class="todo_container">
+                    <div id="todo-warning"></div>
+                    <ul class="todo-list"></ul>
+                </div>
+
+            </section>
+            <section class="notes_container container">
+                <h2 class="notes_container__header">Notes</h2>
+                <div id="add-box__button">
+                    <a href="#myModal" class="btn__link">+</a>
+                </div>
+                <div id="notes"></div>
+            </section>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <form class="noteForm">
+                        <input name="note-title" id="add-box__note-title" placeholder="title"></input>
+                        <textarea name="note" id="add-box__note-input" placeholder="write down your note"
+                            maxlength="75"></textarea>
+                        <button type="submit" name="submit" class="submit">add</button>
+                        <div>
+                            <a href="#close" class="cancel">cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <section class="deadlines_container container">
+                <h2 class="deadlines_container__header">Deadlines</h2>
+            </section>
+            <section class="habits_container container">
+                <h2 class="habits_container__header">Habits</h2>
+                <div class="habit_tracker_wrap">
+                    <input type="text" id="habit_input" placeholder="Add habit here">
+                    <button id="add_habit" onclick="addHabit()">+ habit</button>
+                    <div id="habit_box" class="habit_box"></div>
+                </div>
+            </section>
+        </div>
+        </div>
+    </main>
+
+
+    <script src="https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js"></script>
+    <script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script>
+    <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.js"></script>
+    <script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script>
+    <script src="https://cdn.rawgit.com/dropbox/zxcvbn/v1.0/zxcvbn.js"></script>
+    <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.6.1/dist/progressbar.js"></script>
+
+
+    <script src="assets/script-upd/calendar.js"></script>
+    <script src="assets/script-upd/todo.js"></script>
+    <script src="assets/script-upd/index-notes.js"></script>
+    <script src="assets/script-upd/htracker.js"></script>
+</body>
+
+</html>
