@@ -62,6 +62,7 @@ if(myPlanner.find(x=>x.date==date))
 
         let completedButton = document.createElement('input');
         completedButton.setAttribute("type", "checkbox");
+        completedButton.setAttribute("class", "todo-check");
         if (todo.isDone) completedButton.setAttribute("checked", "checked");
 
         let newTodo = document.createElement('li');

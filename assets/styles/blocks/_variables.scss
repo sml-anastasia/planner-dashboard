@@ -1,7 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Playfair+Display&display=swap');
-$defaultFont: "Mulish",
+//  @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Playfair+Display&display=swap');
+
+@font-face {
+    font-family: 'Nunito';
+    src: local('Nunito'),
+        url('../../fonts/Nunito/Nunito-Regular.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: local('Playfair Display'),
+        url('../../fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf') format('ttf');
+}
+
+// @font-face {
+//     font-family: "Nunito";
+//     src: url(../../fonts/Nunito/Nunito-Regular.ttf);
+// }
+
+$defaultFont: 'Nunito',
 sans-serif;
-$titleFont: "Playfair Display",
+$titleFont: 'Playfair Display',
 serif;
 
 $body_background: rgb(255, 240, 223);
