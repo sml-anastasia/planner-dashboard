@@ -6,9 +6,10 @@ const todoList = document.querySelector('.todo-list');
 todoButton.addEventListener("click", addTodo);
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    myPlanner = JSON.parse(localStorage.getItem('planner'));
+    let planner = JSON.parse(localStorage.getItem('planner'));
 
-    if (myPlanner != null) {
+    if (planner != null) {
+        myPlanner = planner;
         appendTodo();
         appendNotes();
     }
