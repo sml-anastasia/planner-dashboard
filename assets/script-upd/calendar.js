@@ -61,7 +61,4 @@ function generateDashboard(date) {
     console.log(todayTasks);
     console.log(todayNotes);
     // localStorage.setItem('planner', JSON.stringify(myPlanner)); // если эту строчку использовать, то планнер при переключении на другую дату обнуляется в хранилище
-
-    //document.getElementById('taskContainer').innerHTML = dashboardDiv;
-    //document.getElementById('dashboard').setAttribute('date', date);
 }

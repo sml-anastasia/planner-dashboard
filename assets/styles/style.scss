@@ -51,18 +51,29 @@ a,
 
 #dashboard {
     display: grid;
-    grid-template-columns: 60vw 40vw;
+    grid-template-columns: 50vw 50vw;
     // grid-template-rows: 25vh 30vh 30vh 20vh;
     // grid-template-areas:
     //     "calendar calendar"
     //     "todo deadlines"
     //     "notes deadlines"
     //     "habits habits";
-    grid-template-rows: 30vh 30vh 20vh;
+    grid-template-rows: 40vh 40vh;
     grid-template-areas:
-        "todo deadlines"
-        "notes deadlines"
-        "habits habits";
+        "todo notes"
+        "deadlines deadlines";
+}
+
+@media (max-width: 800px) {
+    #dashboard {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 30vh 30vh 40fr;
+        grid-template-areas:
+            "todo todo"
+            "notes notes"
+            "deadlines deadlines";
+    }
 }
 
 .container {

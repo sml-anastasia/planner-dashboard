@@ -3,13 +3,10 @@ let noteForm = document.querySelector(".noteForm");
 let noteDiv = document.querySelector("#notes");
 let cancel = document.querySelector(".cancel");
 let noteDeleteButtons;
-let noteList = [];
 
 noteForm.addEventListener('submit', (event) => {
     addNote(event);
 });
-
-// let date = getParameterByName('date');
 
 function addNote(event) {
     event.preventDefault();
@@ -33,7 +30,7 @@ function addNote(event) {
     }
     else
         {
-            myPlanner.push({date:date,  
+            myPlanner.push({date:date,
                         todo: [],
                         notes: [],
                         deadlines: [],
@@ -60,10 +57,10 @@ function appendNotes() {
     myPlanner.find(x=>x.date==date).notes.map(note => {
         let noteBox = document.createElement('div');
         noteBox.classList = 'note-item';
-        let noteTitle = document.createElement('span');
+        let noteTitle = document.createElement('p');
         noteTitle.innerText = note.title;
         noteTitle.classList = 'note-title';
-        let noteText = document.createElement('span');
+        let noteText = document.createElement('p');
         noteText.innerText = note.note;
         noteText.classList = 'note-text';
         let noteDelete = document.createElement('img');

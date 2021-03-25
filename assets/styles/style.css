@@ -98,29 +98,42 @@
 .note-item {
   margin: 5px auto;
   color: #000000;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  font-size: 1.2rem;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: 'ntitle ndelete' 'ntext ntext';
+  font-size: 1rem;
   padding: 0.3rem;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .note-title,
 .note-text {
-  margin-right: 15px;
+  margin-bottom: 1%;
   color: #1f1f1f;
 }
 
 .note-title {
   font-weight: 700;
   color: #f5b618;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: ntitle;
+}
+
+.note-text {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: ntext;
+}
+
+.note-delete {
+  margin-left: auto;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: ndelete;
 }
 
 .habit_box {
@@ -181,6 +194,7 @@
 }
 
 .todo-name {
+  width: 100px;
   border: none;
   border-bottom: 1px solid #7d7987;
 }
@@ -247,11 +261,23 @@ a,
 #dashboard {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 60vw 40vw;
-      grid-template-columns: 60vw 40vw;
-  -ms-grid-rows: 30vh 30vh 20vh;
-      grid-template-rows: 30vh 30vh 20vh;
-      grid-template-areas: "todo deadlines" "notes deadlines" "habits habits";
+  -ms-grid-columns: 50vw 50vw;
+      grid-template-columns: 50vw 50vw;
+  -ms-grid-rows: 40vh 40vh;
+      grid-template-rows: 40vh 40vh;
+      grid-template-areas: "todo notes" "deadlines deadlines";
+}
+
+@media (max-width: 800px) {
+  #dashboard {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 30vh 30vh 40fr;
+        grid-template-rows: 30vh 30vh 40fr;
+        grid-template-areas: "todo todo" "notes notes" "deadlines deadlines";
+  }
 }
 
 .container {
@@ -320,9 +346,9 @@ a,
 }
 
 .deadlines_container {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 2;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: deadlines;
 }
 
@@ -330,9 +356,6 @@ a,
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
   grid-area: habits;
 }
 
