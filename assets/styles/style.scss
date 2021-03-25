@@ -3,16 +3,35 @@
 @import "./blocks/habits";
 @import "./blocks/todo";
 
+* {
+    font-family: $defaultFont;
+    font-weight: 300;
+    box-sizing: border-box;
+}
+
 body {
+    max-width: 1440px;
     margin: 0;
 
     background-color: $body_background;
     color: $text_color;
 }
 
+h2 {
+    font-family: $titleFont;
+    font-weight: 400;
+}
+
 a {
     text-decoration: none;
     color: $text_color;
+}
+
+button,
+a,
+.delete-btn,
+.note-delete {
+    cursor: pointer;
 }
 
 .header_container {
@@ -33,12 +52,12 @@ a {
 #dashboard {
     display: grid;
     grid-template-columns: 60vw 40vw;
-    grid-template-rows: 25vh 30vh 30vh 20vh;
-    grid-template-areas:
-        "calendar calendar"
-        "todo deadlines"
-        "notes deadlines"
-        "habits habits";
+    // grid-template-rows: 25vh 30vh 30vh 20vh;
+    // grid-template-areas:
+    //     "calendar calendar"
+    //     "todo deadlines"
+    //     "notes deadlines"
+    //     "habits habits";
     grid-template-rows: 30vh 30vh 20vh;
     grid-template-areas:
         "todo deadlines"
@@ -57,10 +76,10 @@ a {
 .calendar_container {
     grid-area: calendar;
     padding: 1em;
+}
 
-    #menu {
-        display: inline;
-    }
+#menu {
+    display: inline;
 }
 
 .calendar_container__header {
@@ -82,6 +101,12 @@ a {
 
 .todo_container {
     grid-area: todo;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 30% 70%;
+    grid-template-areas:
+        'header form'
+        'header cont';
 }
 
 .notes_container {
@@ -103,4 +128,28 @@ a {
 .habits_container {
     height: max-content;
     grid-area: habits;
+}
+
+.ui-btn {
+    width: 5rem;
+    height: 2rem;
+    display: flex;
+    border: none;
+    border-radius: 8px;
+}
+
+.note-submit {
+    margin-left: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1rem;
+    background: #f9f9fb;
+    color: #7d7987;
+}
+
+.todo-btn {
+    display: inline;
+    margin-right: auto;
+    background: $header_background;
+    font-size: 16px;
 }

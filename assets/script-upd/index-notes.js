@@ -5,14 +5,6 @@ let cancel = document.querySelector(".cancel");
 let noteDeleteButtons;
 let noteList = [];
 
-// document.addEventListener("DOMContentLoaded", function (event) {
-//     noteList = JSON.parse(localStorage.getItem('planner'));
-//     if (noteList != null) {
-//         appendNotes();
-//     }
-//     appendNotes();
-// });
-
 noteForm.addEventListener('submit', (event) => {
     addNote(event);
 });

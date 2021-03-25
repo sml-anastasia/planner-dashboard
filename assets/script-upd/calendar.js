@@ -13,13 +13,6 @@ let calendar = new tui.Calendar('#calendar', {
 };
 
 var myPlanner = [];
-//{
-// date: '',
-// todo: [],
-// notes: [],
-// deadlines: [],
-// habits: []
-// }];
 
 if (!Date.prototype.toISODate) {
     Date.prototype.toISODate = function() {
@@ -43,7 +36,13 @@ calendar.on('clickDayname', function(event) {
 
 document.addEventListener("DOMContentLoaded", function (event) {
     let today = getParameterByName('date');
-    generateDashboard(today);
+    if (!today) {
+        console.log('error');
+        let dashboard = document.querySelector('#dashboard');
+        dashboard.style.display = 'none';
+    } else {
+        generateDashboard(today);
+    }
 });
 
 function getParameterByName(name, url = window.location.href) {
