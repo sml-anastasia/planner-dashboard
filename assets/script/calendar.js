@@ -12,13 +12,7 @@ let calendar = new tui.Calendar('#calendar', {
         calendar.prev();
 };
 
-let myPlanner = [{
-    todo: [],
-    notes: [],
-    deadlines: [],
-    habits: []
-}
-];
+var myPlanner = [];
 
 if (!Date.prototype.toISODate) {
     Date.prototype.toISODate = function() {
@@ -27,63 +21,46 @@ if (!Date.prototype.toISODate) {
 }
 let today = new Date().toISODate();
 
+function updateURL(date) {
+    var baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    var newUrl = baseUrl + '?date=' + date;
+    window.location.href = newUrl;
+}
+
 calendar.on('clickDayname', function(event) {
     myPlanner.date = event.date;
-    
+    updateURL(event.date);
     generateDashboard(event.date);
-    console.log(myPlanner)
+    console.log(myPlanner);
 });
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    generateDashboard(getQueryParams('date'));
+    let today = getParameterByName('date');
+    if (!today) {
+        console.log('error');
+        let dashboard = document.querySelector('#dashboard');
+        let start = document.querySelector('#start');
+        dashboard.style.display = 'none';
+        start.style.display = 'block';
+    } else {
+        generateDashboard(today);
+    }
 });
 
-function getQueryParams(qs) {
-    qs = qs.split('+').join(' ');
-
-    var params = {},
-        tokens,
-        re = /[?&]?([^=]+)=([^&]*)/g;
-
-    while (tokens = re.exec(qs)) {
-        params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
-    }
-
-    return params;
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
 function generateDashboard(date) {
     console.log(date);
-    let dashboardDiv = `<div class="todo_container container">
-        <h2 class="todo_container__header">To-do</h2>
-    </div>
-    <section class="notes_container container">
-                <h2 class="notes_container__header">Notes</h2>
-                <div id="add-box__button">
-                    <a href="#myModal" class="btn__link">+</a>
-                </div>
-                <div id="notes"></div>
-            </section>
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <form class="noteForm">
-                        <input name="note-title" id="add-box__note-title" placeholder="title"></input>
-                        <textarea name="note" id="add-box__note-input" placeholder="write down your note"></textarea>
-                        <button type="button" name="submit" class="submit" onclick="addNote();">add</button>
-                        <div>
-                            <a href="#close" class="cancel">cancel</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-    <div class="deadlines_container container">
-        <h2 class="deadlines_container__header">Deadlines</h2>
-        <div id="deadline_bar"></div>
-    </div>
-    <div class="habits_container container">
-        <h2 class="habits_container__header">Habits</h2>
-    </div>`;
-
-    document.getElementById('dashboard').innerHTML = dashboardDiv;
-    document.getElementById('dashboard').setAttribute('date', date);
+    let todayTasks = myPlanner.find(x=>x.date==date);
+    let todayNotes = myPlanner.find(x=>x.date==date);
+    console.log(todayTasks);
+    console.log(todayNotes);
+    // localStorage.setItem('planner', JSON.stringify(myPlanner)); // если эту строчку использовать, то планнер при переключении на другую дату обнуляется в хранилище
 }

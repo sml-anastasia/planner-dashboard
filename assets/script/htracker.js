@@ -3,15 +3,17 @@
 let habitBox= document.querySelector("#habit_box");
 let allHabits = [];
 
-document.addEventListener("DOMContentLoaded", function (event) {
-    allHabits = JSON.parse(localStorage.getItem('habits'));
-        if (allHabits != null) {
-        appendHabit();
-    }
-}); 
+// document.addEventListener("DOMContentLoaded", function (event) {
+//     allHabits = JSON.parse(localStorage.getItem('habits'));
+//         if (allHabits != null) {
+//         appendHabit();
+//     }
+
+//     appendHabit();
+// }); 
 
 function addHabit() {
-    let newHabit = {};
+    let newHabit = {checks:[]};
     let habitName = document.getElementById("habit_input");
 
     if (habitName.value == ""){
@@ -19,8 +21,23 @@ function addHabit() {
     } else {
         newHabit.name = habitName.value;
     }
+    console.log(newHabit);
+    let dateToAdd = myPlanner.find(x=>x.date==date);
+    if(dateToAdd!=undefined)
+    {
+        myPlanner.find(x=>x.date==date).habits.push(newHabit);
+    }
+    else
+        {
+            myPlanner.push({date:date,  
+                        todo: [],
+                        notes: [],
+                        deadlines: [],
+                        habits: []});
+            myPlanner.find(x=>x.date==date).todo.push(newHabit);
+        }
+    console.log(newHabit);
     appendHabit();
-    allHabits.push(newHabit);
 }
 
 function appendHabit(){
@@ -30,8 +47,12 @@ function appendHabit(){
         habit.remove();
 })
 }
+    // let date = getParameterByName('date');
+    
+    //console.log(myPlanner.find(x=>x.date==date).habits);
 
-allHabits.map(habit => {
+    if(myPlanner.find(x=>x.date==date)) {
+    myPlanner.find(x=>x.date==date).habits.map(habit => {
     let habitItem = document.createElement('div');
     habitItem.classList = 'habit-item';
     let habitTitle = document.createElement('span');
@@ -45,10 +66,12 @@ allHabits.map(habit => {
     // habitDelete.src = 'assets/images/note-icon-delete.svg';
     // habitDelete.classList.add('habit-delete');
     let habitCheck;
-    for (i=0; i<7; i++){
+    for (let i=0; i<7; i++){
         habitCheck = document.createElement('input');
         habitCheck.setAttribute("type", "checkbox");
         habitCheck.setAttribute("name",`checkbox-${habit.name}`);
+        // if (habit.checks[i]) habitCheck.setAttribute("checked", "checked");
+        //habitCheck.onclick = 
         // habitCheck.type = 'checkbox';
         // habitCheck.name = `checkbox-${habit.name}`; 
         habitForm.appendChild(habitCheck);
@@ -59,9 +82,11 @@ allHabits.map(habit => {
     habitItem.appendChild(habitForm);
     
     habitBox.appendChild(habitItem);
+    
     // getDeleteButtons();
-    localStorage.setItem('habits', JSON.stringify(allHabits));
-    }) 
+    localStorage.setItem('planner', JSON.stringify(myPlanner));
+    });
+    }
 }
 // let checkboxes = [];
 

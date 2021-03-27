@@ -33,6 +33,9 @@
             <div id="calendar"></div>
         </div>
 
+        <p id="start">
+            Please, choose date
+        </p>
         <div id="dashboard">
 
             <section class="todo_container container">
@@ -49,7 +52,6 @@
                     <div id="todo-warning"></div>
                     <ul class="todo-list"></ul>
                 </div>
-
             </section>
             <section class="notes_container container">
                 <h2 class="notes_container__header">Notes</h2>
@@ -62,9 +64,9 @@
                 <div class="modal-content">
                     <form class="noteForm">
                         <input name="note-title" id="add-box__note-title" placeholder="note title"></input>
-                        <p>max 75 symbols</p>
+                        <p>max 150 symbols</p>
                         <textarea name="note" id="add-box__note-input" placeholder="write down your note"
-                            maxlength="75"></textarea>
+                            maxlength="150"></textarea>
                         <button type="submit" name="submit" class="ui-btn note-submit"><span
                                 class="btn__link">add</span></button>
                         <div>
@@ -75,16 +77,17 @@
             </div>
             <section class="deadlines_container container">
                 <h2 class="deadlines_container__header">Deadlines</h2>
+                <canvas id="myChart"></canvas>
+
             </section>
-            <section class="habits_container container">
+            <!-- <section class="habits_container container">
                 <h2 class="habits_container__header">Habits</h2>
                 <div class="habit_tracker_wrap">
                     <input type="text" id="habit_input" placeholder="Add habit here">
                     <button id="add_habit" onclick="addHabit()">+ habit</button>
                     <div id="habit_box" class="habit_box"></div>
                 </div>
-            </section>
-        </div>
+            </section> -->
         </div>
     </main>
 
@@ -97,10 +100,10 @@
     <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.6.1/dist/progressbar.js"></script>
 
 
-    <script src="assets/script-upd/calendar.js"></script>
-    <script src="assets/script-upd/todo.js"></script>
-    <script src="assets/script-upd/index-notes.js"></script>
-    <!-- <script src="assets/script-upd/htracker.js"></script> -->
+    <script src="assets/script/calendar.js"></script>
+    <script src="assets/script/todo.js"></script>
+    <!-- <script src="assets/script/index-notes.js"></script> -->
+    <!-- <script src="assets/script/htracker.js"></script> -->
 </body>
 
 </html>

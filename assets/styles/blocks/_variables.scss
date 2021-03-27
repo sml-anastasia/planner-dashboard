@@ -2,8 +2,23 @@
 
 @font-face {
     font-family: 'Nunito';
+    font-weight: 400;
     src: local('Nunito'),
         url('../../fonts/Nunito/Nunito-Regular.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Nunito';
+    font-weight: 300;
+    src: local('Nunito'),
+        url('../../fonts/Nunito/Nunito-Light.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Nunito';
+    font-weight: 700;
+    src: local('Nunito'),
+        url('../../fonts/Nunito/Nunito-Bold.ttf') format('ttf');
 }
 
 @font-face {
