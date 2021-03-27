@@ -411,6 +411,7 @@ a,
 }
 
 .done {
+  text-decoration: line-through;
   color: #7d7987;
 }
 /*# sourceMappingURL=style.css.map */

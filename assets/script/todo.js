@@ -28,7 +28,7 @@ function addTodo(event) {
         return;
     } else {
         newTodoObj.text = todoText;
-        newTodoObj.isDone = false;
+        newTodoObj.isDone = 0;
     }
     
     let dateToAdd = myPlanner.find(x=>x.date==date);
@@ -67,14 +67,14 @@ if(myPlanner.find(x=>x.date==date))
         completedButton.setAttribute("class", "todo-check");
         completedButton.setAttribute("onchange", "doneTodo(this);");
         completedButton.setAttribute("id", `done-${todo.text}`);
-        if(todo.isDone == true) {
+        if(todo.isDone == 1) {
             completedButton.setAttribute("checked", "checked");
         }
 
         let newTodo = document.createElement('li');
         newTodo.innerText = todo.text;
         newTodo.classList.add('todo-item');
-        if(todo.isDone == true) {
+        if(todo.isDone == 1) {
             newTodo.classList.add("done");
         }
 
@@ -96,12 +96,12 @@ function doneTodo(sender) {
     let todoDone = sender.nextSibling.innerText;
     for (i = 0; i < myPlanner.find(x=>x.date==date).todo.length; i++) {
         if (myPlanner.find(x=>x.date==date).todo[i].text == todoDone) {
-            if (myPlanner.find(x=>x.date==date).todo[i].isDone == true) {
-                myPlanner.find(x=>x.date==date).todo[i].isDone = false;
+            if (myPlanner.find(x=>x.date==date).todo[i].isDone == 1) {
+                myPlanner.find(x=>x.date==date).todo[i].isDone = 0;
                 sender.nextSibling.classList.remove("done");
                 localStorage.setItem('planner', JSON.stringify(myPlanner));
             } else {
-                myPlanner.find(x=>x.date==date).todo[i].isDone = true;
+                myPlanner.find(x=>x.date==date).todo[i].isDone = 1;
                 sender.nextSibling.classList.add("done");
                 localStorage.setItem('planner', JSON.stringify(myPlanner));
             }
@@ -263,30 +263,3 @@ function deleteNote(noteToDelete) {
 //         }
 //     }
 // });
-
-//myPlanner.find(x=>x.date==date)[i].todoDone
-
-// function doneTodo(todoIsDone) {
-//     for(let i = 0; i < myPlanner.find(x=>x.date==date).todo.length; i++) {
-//         if(myPlanner.find(x=>x.date==date).todo[i].text == todoIsDone) {
-//             myPlanner.find(x=>x.date==date)[i].todoDone.replace(i, true);
-//             completedButton.setAttribute("checked", "checked");
-//         }
-//     }
-//     localStorage.setItem('planner', JSON.stringify(myPlanner));
-//     appendTodo();
-// }
-
-// function deleteCheck(e) {
-//     const item = e.target;
-//     //DELETE ITEM
-//     if (item.classList[0] === "delete-btn") {
-//         const todo = item.parentElement;
-//         todo.remove()
-//     }
-//     //COMPLETE ITEM
-//     if (item.classList[0] === "complete-btn") {
-//         const todo = item.parentElement;
-//         todo.classList.toggle("completedItem")
-//     }
-// }
