@@ -3,14 +3,6 @@ let noteForm = document.querySelector(".noteForm");
 let noteDiv = document.querySelector("#notes");
 let cancel = document.querySelector(".cancel");
 let noteDeleteButtons;
-let noteList = [];
-
-document.addEventListener("DOMContentLoaded", function (event) {
-    noteList = JSON.parse(localStorage.getItem('notes'));
-    if (noteList != null) {
-        appendNotes();
-    }
-});
 
 noteForm.addEventListener('submit', (event) => {
     addNote(event);
@@ -30,7 +22,23 @@ function addNote(event) {
         newNote.title = title.value;
         newNote.note = note.value;
     }
-    noteList.push(newNote);
+
+    let dateToAdd = myPlanner.find(x=>x.date==date);
+    if(dateToAdd!=undefined)
+    {
+        myPlanner.find(x=>x.date==date).notes.push(newNote);
+    }
+    else
+        {
+            myPlanner.push({date:date,
+                        todo: [],
+                        notes: [],
+                        deadlines: [],
+                        habits: []});
+            myPlanner.find(x=>x.date==date).notes.push(newNote);
+            
+        }
+    console.log(newNote);
     title.value = '';
     note.value = '';
     appendNotes();
@@ -45,13 +53,14 @@ function appendNotes() {
         })
     }
 
-    noteList.map(note => {
+    if(myPlanner.find(x=>x.date==date))
+    myPlanner.find(x=>x.date==date).notes.map(note => {
         let noteBox = document.createElement('div');
         noteBox.classList = 'note-item';
-        let noteTitle = document.createElement('span');
+        let noteTitle = document.createElement('p');
         noteTitle.innerText = note.title;
         noteTitle.classList = 'note-title';
-        let noteText = document.createElement('span');
+        let noteText = document.createElement('p');
         noteText.innerText = note.note;
         noteText.classList = 'note-text';
         let noteDelete = document.createElement('img');
@@ -61,10 +70,9 @@ function appendNotes() {
         noteBox.appendChild(noteTitle);
         noteBox.appendChild(noteText);
         noteBox.appendChild(noteDelete);
-        
         noteDiv.appendChild(noteBox);
         getDeleteNoteButtons();
-        localStorage.setItem('notes', JSON.stringify(noteList));
+        localStorage.setItem('planner', JSON.stringify(myPlanner));
     })
 }
 
@@ -80,11 +88,11 @@ function getDeleteNoteButtons() {
 }
 
 function deleteNote(noteToDelete) {
-    for(let i = 0; i < noteList.length; i++) {
-        if(noteList[i].title == noteToDelete) {
-            noteList.splice(i, 1);
+    for(let i = 0; i < myPlanner.find(x=>x.date==date).notes.length; i++) {
+        if(myPlanner.find(x=>x.date==date).notes[i].title == noteToDelete) {
+            myPlanner.find(x=>x.date==date).notes.splice(i, 1);
         }
     }
-    localStorage.setItem('notes', JSON.stringify(noteList));
+    localStorage.setItem('planner', JSON.stringify(myPlanner));
     appendNotes();
 }
