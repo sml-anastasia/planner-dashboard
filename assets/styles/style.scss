@@ -60,7 +60,7 @@ a,
 #dashboard {
     display: grid;
     grid-template-columns: 50vw 50vw;
-    grid-template-rows: 40vh 40vh 10vh 10vh;
+    grid-template-rows: 60vh 40vh 10vh 10vh;
     grid-template-areas:
         "todo notes"
         "deadlines deadlines"

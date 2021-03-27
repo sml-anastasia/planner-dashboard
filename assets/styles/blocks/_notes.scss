@@ -43,6 +43,8 @@
 
 #notes {
     width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
     grid-area: notes;
     overflow: scroll;
 }
@@ -88,7 +90,6 @@
 }
 
 .note-item {
-    margin: 5px auto;
     color: #000000;
     display: grid;
     grid-template-areas:

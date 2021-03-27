@@ -41,15 +41,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 ],
                 borderWidth: 1
             }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    gridLines: {
-                        display: false
-                    }
-                }]
-            }
         }
     });
 });
