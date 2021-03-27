@@ -13,6 +13,7 @@ let calendar = new tui.Calendar('#calendar', {
 };
 
 var myPlanner = [];
+let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 if (!Date.prototype.toISODate) {
     Date.prototype.toISODate = function() {
@@ -27,11 +28,10 @@ function updateURL(date) {
     window.location.href = newUrl;
 }
 
-calendar.on('clickDayname', function(event) {
+calendar.on('clickDayname', function (event) {
     myPlanner.date = event.date;
     updateURL(event.date);
     generateDashboard(event.date);
-    console.log(myPlanner);
 });
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -45,6 +45,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
     } else {
         generateDashboard(today);
     }
+
+    let dateDiv = document.getElementById('date-container');
+    let fullDate = getParameterByName('date').split("-");
+    let monthNumber = Number(fullDate[1]) - 1;
+    dateDiv.innerHTML = months[monthNumber]+' '+fullDate[2];
 });
 
 function getParameterByName(name, url = window.location.href) {

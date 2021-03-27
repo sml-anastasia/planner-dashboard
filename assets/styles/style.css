@@ -271,35 +271,7 @@ a,
   border-radius: 10px;
 }
 
-#welcome {
-  width: 20em;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #fffffe;
-  border-radius: 100px;
-}
-
-#welcome h1 {
-  font-family: 'Playfair Display';
-  font-weight: 600;
-  margin-bottom: -10px;
-}
-
-#welcome #start {
+#start {
   height: 200px;
   text-align: center;
   display: none;
@@ -307,53 +279,73 @@ a,
   color: #f5b618;
 }
 
-#welcome #dashboard {
+#dashboard {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 50vw 50vw;
       grid-template-columns: 50vw 50vw;
-  -ms-grid-rows: 40vh 40vh 10vh 10vh;
-      grid-template-rows: 40vh 40vh 10vh 10vh;
-      grid-template-areas: "todo notes" "deadlines deadlines" "habits habits";
+  -ms-grid-rows: 5vh 40vh 40vh 10vh 10vh;
+      grid-template-rows: 5vh 40vh 40vh 10vh 10vh;
+      grid-template-areas: "date date" "todo notes" "deadlines deadlines" "habits habits";
+}
+
+#date-container {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: date;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fffffe;
+  font-size: 160%;
+  font-weight: 500;
 }
 
 @media (max-width: 800px) {
-  #welcome #dashboard {
+  #dashboard {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
-    -ms-grid-rows: 30vh 30vh 30fr 10fr;
-        grid-template-rows: 30vh 30vh 30fr 10fr;
-        grid-template-areas: "todo todo" "notes notes" "deadlines deadlines" "habits habits";
+    -ms-grid-rows: 5vh 30vh 30vh 30fr 10fr;
+        grid-template-rows: 5vh 30vh 30vh 30fr 10fr;
+        grid-template-areas: "date date" "todo todo" "notes notes" "deadlines deadlines" "habits habits";
   }
 }
 
-#welcome .container {
+.container {
   border-radius: 20px;
   margin: 1em;
   padding: 0 1em 0 1em;
   background-color: #fffffe;
 }
 
-#welcome .calendar_container {
+.calendar_container {
   grid-area: calendar;
   padding: 1em;
 }
 
-#welcome #menu {
+#menu {
   display: inline;
 }
 
-#welcome .calendar_container__header {
+.calendar_container__header {
   display: inline;
 }
 
-#welcome .tui-full-calendar-container {
+.tui-full-calendar-container {
   width: 80vw;
 }
 
-#welcome .tui-full-calendar-dayname-leftmargin {
+.tui-full-calendar-dayname-leftmargin {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -363,13 +355,13 @@ a,
           flex-direction: row;
 }
 
-#welcome .tui-full-calendar-dayname-container {
+.tui-full-calendar-dayname-container {
   height: 10vh;
   cursor: pointer;
 }
 
-#welcome .todo_container {
-  -ms-grid-row: 1;
+.todo_container {
+  -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: todo;
   display: -ms-grid;
@@ -381,7 +373,7 @@ a,
       grid-template-areas: 'header form' 'header cont';
 }
 
-#welcome .notes_container {
+.notes_container {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
@@ -391,29 +383,29 @@ a,
       grid-template-areas: 'title btn' 'notes notes';
 }
 
-#welcome .grafic_container {
+.grafic_container {
   grid-area: grafic;
 }
 
-#welcome .deadlines_container {
+.deadlines_container {
   height: 500px;
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: deadlines;
 }
 
-#welcome .habits_container {
+.habits_container {
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  -ms-grid-row: 3;
+  -ms-grid-row: 4;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: habits;
 }
 
-#welcome .ui-btn {
+.ui-btn {
   width: 5rem;
   height: 2rem;
   display: -webkit-box;
@@ -423,7 +415,7 @@ a,
   border-radius: 8px;
 }
 
-#welcome .note-submit {
+.note-submit {
   margin-left: auto;
   font-weight: 600;
   font-style: normal;
@@ -432,14 +424,14 @@ a,
   color: #7d7987;
 }
 
-#welcome .todo-btn {
+.todo-btn {
   display: inline;
   margin-right: auto;
   background: #f5b618;
   font-size: 16px;
 }
 
-#welcome .done {
+.done {
   color: #7d7987;
 }
 /*# sourceMappingURL=style.css.map */

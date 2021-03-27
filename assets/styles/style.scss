@@ -49,25 +49,6 @@ a,
     border-radius: 10px;
 }
 
-#welcome {
-    width: 20em;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color: $block_background;
-    border-radius: 100px;
-
-    h1 {
-        font-family: 'Playfair Display';
-        font-weight: 600;
-
-        margin-bottom: -10px;
-    }
 #start {
     height: 200px;
     text-align: center;
@@ -79,19 +60,34 @@ a,
 #dashboard {
     display: grid;
     grid-template-columns: 50vw 50vw;
-    grid-template-rows: 40vh 40vh 10vh 10vh;
+    grid-template-rows: 5vh 40vh 40vh 10vh 10vh;
     grid-template-areas:
+        "date date"
         "todo notes"
         "deadlines deadlines"
         "habits habits";
+}
+
+#date-container {
+    grid-area: date;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $block_background;
+
+    font-size: 160%;
+    font-weight: 500;
 }
 
 @media (max-width: 800px) {
     #dashboard {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 30vh 30vh 30fr 10fr;
-        grid-template-areas:
+        grid-template-rows: 5vh 30vh 30vh 30fr 10fr;
+        grid-template-areas: 
+            "date date"
             "todo todo"
             "notes notes"
             "deadlines deadlines"
@@ -192,4 +188,4 @@ a,
 
 .done {
     color: #7d7987;
-}}
+}
