@@ -1,5 +1,3 @@
-// var Chart = require('chart.js');
-
 const todoInput = document.querySelector('.todo-name');
 const todoButton = document.querySelector('.todo-btn');
 const todoList = document.querySelector('.todo-list');
@@ -24,11 +22,12 @@ function addTodo(event) {
 
     let newTodoObj = {};
     let todoText = todoInput.value;
+    
     if (todoText == '') {
         return;
     } else {
-        newTodoObj.text = todoText;
-        newTodoObj.isDone = false;
+        newTodoObj.text = todoText.replace(/\s+/g,' ' ).replace(/^\s/,'').replace(/\s$/,'');
+        newTodoObj.isDone = 0;
     }
     
     let dateToAdd = myPlanner.find(x=>x.date==date);
@@ -45,7 +44,6 @@ function addTodo(event) {
                         habits: []});
             myPlanner.find(x=>x.date==date).todo.push(newTodoObj);
         }
-    console.log(newTodoObj);
     appendTodo();
 }
 
@@ -67,14 +65,14 @@ if(myPlanner.find(x=>x.date==date))
         completedButton.setAttribute("class", "todo-check");
         completedButton.setAttribute("onchange", "doneTodo(this);");
         completedButton.setAttribute("id", `done-${todo.text}`);
-        if(todo.isDone == true) {
+        if(todo.isDone == 1) {
             completedButton.setAttribute("checked", "checked");
         }
 
         let newTodo = document.createElement('li');
         newTodo.innerText = todo.text;
         newTodo.classList.add('todo-item');
-        if(todo.isDone == true) {
+        if(todo.isDone == 1) {
             newTodo.classList.add("done");
         }
 
@@ -96,12 +94,12 @@ function doneTodo(sender) {
     let todoDone = sender.nextSibling.innerText;
     for (i = 0; i < myPlanner.find(x=>x.date==date).todo.length; i++) {
         if (myPlanner.find(x=>x.date==date).todo[i].text == todoDone) {
-            if (myPlanner.find(x=>x.date==date).todo[i].isDone == true) {
-                myPlanner.find(x=>x.date==date).todo[i].isDone = false;
+            if (myPlanner.find(x=>x.date==date).todo[i].isDone == 1) {
+                myPlanner.find(x=>x.date==date).todo[i].isDone = 0;
                 sender.nextSibling.classList.remove("done");
                 localStorage.setItem('planner', JSON.stringify(myPlanner));
             } else {
-                myPlanner.find(x=>x.date==date).todo[i].isDone = true;
+                myPlanner.find(x=>x.date==date).todo[i].isDone = 1;
                 sender.nextSibling.classList.add("done");
                 localStorage.setItem('planner', JSON.stringify(myPlanner));
             }
@@ -129,8 +127,6 @@ function deleteTodo(todoToDelete) {
     appendTodo();
 }
 
-
-
 // NOTES
 
 let modal = document.querySelector(".modal");
@@ -148,23 +144,23 @@ function addNote(event) {
 
     let newNote = {};
     
-    let title = document.querySelector("#add-box__note-title");
-    let note = document.querySelector("#add-box__note-input");
+    let title = document.querySelector("#add-box__note-title").value;
+    let note = document.querySelector("#add-box__note-input").value;
 
-    if (title.value == '' || note.value == '') {
-        return alert("Please, enter both fields");
+    if (title == '' || note == '') {
+        return document.getElementById('note-warning').style.display = 'block';
     } else {
-        newNote.title = title.value;
-        newNote.note = note.value;
+        newNote.title = title.replace(/\s+/g,' ' ).replace(/^\s/,'').replace(/\s$/,'');
+        newNote.note = note.replace(/\s+/g,' ' ).replace(/^\s/,'').replace(/\s$/,'');
+        title = '';
+        note = '';
     }
 
     let dateToAdd = myPlanner.find(x=>x.date==date);
-    if(dateToAdd!=undefined)
-    {
+    if(dateToAdd!=undefined) {
         myPlanner.find(x=>x.date==date).notes.push(newNote);
     }
-    else
-        {
+    else {
             myPlanner.push({date:date,
                         todo: [],
                         notes: [],
@@ -173,9 +169,6 @@ function addNote(event) {
             myPlanner.find(x=>x.date==date).notes.push(newNote);
             
         }
-    console.log(newNote);
-    title.value = '';
-    note.value = '';
     appendNotes();
     cancel.click();
 }
@@ -216,7 +209,6 @@ function getDeleteNoteButtons() {
     noteDeleteButtons.forEach(button => {
         let noteToDelete = button.previousSibling.previousSibling.innerText;
         button.addEventListener('click', () => {
-            
             deleteNote(noteToDelete);
         })
     })
@@ -231,62 +223,3 @@ function deleteNote(noteToDelete) {
     localStorage.setItem('planner', JSON.stringify(myPlanner));
     appendNotes();
 }
-
-///////////////////////
-
-// var ctx = document.getElementById('myChart');
-// var myChart = new Chart(ctx, {
-//     type: 'doughnut',
-//     data: {
-//         labels: ['Red', 'Blue'],
-//         datasets: [{
-//             label: '# of Votes',
-//             data: [12, 19],
-//             backgroundColor: [
-//                 'rgb(255, 99, 132)',
-//                 'rgb(54, 162, 235)'
-//             ],
-//             borderColor: [
-//                 'rgba(255, 99, 132, 1)',
-//                 'rgba(54, 162, 235, 1)'
-//             ],
-//             borderWidth: 1
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero: true
-//                 }
-//             }]
-//         }
-//     }
-// });
-
-//myPlanner.find(x=>x.date==date)[i].todoDone
-
-// function doneTodo(todoIsDone) {
-//     for(let i = 0; i < myPlanner.find(x=>x.date==date).todo.length; i++) {
-//         if(myPlanner.find(x=>x.date==date).todo[i].text == todoIsDone) {
-//             myPlanner.find(x=>x.date==date)[i].todoDone.replace(i, true);
-//             completedButton.setAttribute("checked", "checked");
-//         }
-//     }
-//     localStorage.setItem('planner', JSON.stringify(myPlanner));
-//     appendTodo();
-// }
-
-// function deleteCheck(e) {
-//     const item = e.target;
-//     //DELETE ITEM
-//     if (item.classList[0] === "delete-btn") {
-//         const todo = item.parentElement;
-//         todo.remove()
-//     }
-//     //COMPLETE ITEM
-//     if (item.classList[0] === "complete-btn") {
-//         const todo = item.parentElement;
-//         todo.classList.toggle("completedItem")
-//     }
-// }

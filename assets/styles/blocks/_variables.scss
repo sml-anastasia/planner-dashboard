@@ -3,43 +3,34 @@
 @font-face {
     font-family: 'Nunito';
     font-weight: 400;
-    src: local('Nunito'),
-        url('../../fonts/Nunito/Nunito-Regular.ttf') format('ttf');
+    src: url('../../fonts/Nunito/Nunito-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Nunito';
     font-weight: 300;
-    src: local('Nunito'),
-        url('../../fonts/Nunito/Nunito-Light.ttf') format('ttf');
+    src: url('../../fonts/Nunito/Nunito-Light.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Nunito';
     font-weight: 700;
-    src: local('Nunito'),
-        url('../../fonts/Nunito/Nunito-Bold.ttf') format('ttf');
+    src: url('../../fonts/Nunito/Nunito-Bold.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Playfair Display';
-    src: local('Playfair Display'),
-        url('../../fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf') format('ttf');
+    font-family: 'DM Serif Display';
+    font-weight: 400;
+    src: url('../../fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf') format('truetype');
 }
-
-// @font-face {
-//     font-family: "Nunito";
-//     src: url(../../fonts/Nunito/Nunito-Regular.ttf);
-// }
 
 $defaultFont: 'Nunito',
 sans-serif;
-$titleFont: 'Playfair Display',
+$titleFont: 'DM Serif Display',
 serif;
 
 $body_background: rgb(255, 240, 223);
 $header_background: rgb(245, 182, 24);
-;
 $block_background: rgb(255, 255, 254);
 
 $text_color: rgb(31, 31, 31);

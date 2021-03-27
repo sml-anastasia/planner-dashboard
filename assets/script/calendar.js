@@ -31,25 +31,28 @@ function updateURL(date) {
 calendar.on('clickDayname', function (event) {
     myPlanner.date = event.date;
     updateURL(event.date);
-    generateDashboard(event.date);
 });
 
 document.addEventListener("DOMContentLoaded", function (event) {
     let today = getParameterByName('date');
     if (!today) {
-        console.log('error');
         let dashboard = document.querySelector('#dashboard');
         let start = document.querySelector('#start');
         dashboard.style.display = 'none';
         start.style.display = 'block';
     } else {
-        generateDashboard(today);
+        let dateDiv = document.getElementById('date-container');
+        let fullDate = getParameterByName('date').split("-");
+        let monthNumber = Number(fullDate[1]) - 1;
+        dateDiv.innerHTML = months[monthNumber]+' '+fullDate[2];
     }
-
-    let dateDiv = document.getElementById('date-container');
-    let fullDate = getParameterByName('date').split("-");
-    let monthNumber = Number(fullDate[1]) - 1;
-    dateDiv.innerHTML = months[monthNumber]+' '+fullDate[2];
+    if (window.innerWidth <= 480) {
+        document.querySelector('.tui-full-calendar-dayname-leftmargin').setAttribute('style', 'margin-left: 20px; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;');
+        let days = Array.from(document.querySelectorAll('.tui-full-calendar-dayname'));
+        days.forEach(day => {
+            day.setAttribute('style', 'font-size: 0.3rem; margin-right: 20px;');
+        })
+    }
 });
 
 function getParameterByName(name, url = window.location.href) {
@@ -59,13 +62,4 @@ function getParameterByName(name, url = window.location.href) {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
-
-function generateDashboard(date) {
-    console.log(date);
-    let todayTasks = myPlanner.find(x=>x.date==date);
-    let todayNotes = myPlanner.find(x=>x.date==date);
-    console.log(todayTasks);
-    console.log(todayNotes);
-    // localStorage.setItem('planner', JSON.stringify(myPlanner)); // если эту строчку использовать, то планнер при переключении на другую дату обнуляется в хранилище
 }

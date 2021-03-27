@@ -6,11 +6,12 @@
 * {
     font-family: $defaultFont;
     font-weight: 300;
+    font-size: 1rem;
     box-sizing: border-box;
 }
 
 body {
-    max-width: 1440px;
+    width: 100%;
     margin: 0;
 
     background-color: $body_background;
@@ -20,6 +21,7 @@ body {
 h2 {
     font-family: $titleFont;
     font-weight: 400;
+    font-size: 1.5rem;
 }
 
 a {
@@ -60,39 +62,28 @@ a,
 #dashboard {
     display: grid;
     grid-template-columns: 50vw 50vw;
-    grid-template-rows: 5vh 40vh 40vh 10vh 10vh;
+    grid-template-rows: 5% 40% 40%;
     grid-template-areas:
         "date date"
         "todo notes"
-        "deadlines deadlines"
-        "habits habits";
+        "chart chart";
 }
 
 #date-container {
     grid-area: date;
+    width: 30rem;
     height: 100%;
     display: flex;
     justify-content: center;
+    justify-self: center;
     align-items: center;
 
-    background-color: $block_background;
+    border-radius: 8px;
+    background-color: rgba(87, 145, 184, 1);
 
     font-size: 160%;
     font-weight: 500;
-}
-
-@media (max-width: 800px) {
-    #dashboard {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 5vh 30vh 30vh 30fr 10fr;
-        grid-template-areas: 
-            "date date"
-            "todo todo"
-            "notes notes"
-            "deadlines deadlines"
-            "habits habits";
-    }
+    color: $block_background;
 }
 
 .container {
@@ -148,19 +139,15 @@ a,
         'notes notes';
 }
 
-.grafic_container {
-    grid-area: grafic;
-}
-
-.deadlines_container {
+.chart_container {
     height: 500px;
-    grid-area: deadlines;
+    grid-area: chart;
 }
 
-.habits_container {
-    height: max-content;
-    grid-area: habits;
-}
+// .habits_container {
+//     height: max-content;
+//     grid-area: habits;
+// }
 
 .ui-btn {
     width: 5rem;
@@ -187,5 +174,29 @@ a,
 }
 
 .done {
+    text-decoration: line-through;
     color: #7d7987;
+}
+
+.move-day {
+    background-color: $header_background;
+    border: none;
+    border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+    #dashboard {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 5vh 30vh 30vh 30fr 10fr;
+        grid-template-areas:
+            "date date"
+            "todo todo"
+            "notes notes"
+            "chart chart";
+    }
+
+    .todo-name {
+        width: 110px;
+    }
 }

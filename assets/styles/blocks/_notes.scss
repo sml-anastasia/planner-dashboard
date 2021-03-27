@@ -26,23 +26,14 @@
     color: #f9f9fb;
 }
 
-// #add-box__button {
-//     width: 40px;
-//     height: 40px;
-//     margin: auto 0 auto auto;
-//     display: flex;
-//     background: $header_background;
-//     border-radius: 50px;
-//     border: none;
-//     grid-area: btn;
-// }
-
 .btn__link {
     margin: auto;
 }
 
 #notes {
     width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
     grid-area: notes;
     overflow: scroll;
 }
@@ -88,7 +79,6 @@
 }
 
 .note-item {
-    margin: 5px auto;
     color: #000000;
     display: grid;
     grid-template-areas:
@@ -116,6 +106,11 @@
 
 .note-delete {
     margin-left: auto;
+    padding-right: 2rem;
     align-self: center;
     grid-area: ndelete;
+}
+
+#note-warning {
+    display: none;
 }
