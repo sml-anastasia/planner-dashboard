@@ -284,9 +284,29 @@ a,
   display: grid;
   -ms-grid-columns: 50vw 50vw;
       grid-template-columns: 50vw 50vw;
-  -ms-grid-rows: 40vh 40vh 10vh 10vh;
-      grid-template-rows: 40vh 40vh 10vh 10vh;
-      grid-template-areas: "todo notes" "deadlines deadlines" "habits habits";
+  -ms-grid-rows: 5vh 40vh 40vh 10vh 10vh;
+      grid-template-rows: 5vh 40vh 40vh 10vh 10vh;
+      grid-template-areas: "date date" "todo notes" "deadlines deadlines" "habits habits";
+}
+
+#date-container {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: date;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fffffe;
+  font-size: 160%;
+  font-weight: 500;
 }
 
 @media (max-width: 800px) {
@@ -295,9 +315,9 @@ a,
     display: grid;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
-    -ms-grid-rows: 30vh 30vh 30fr 10fr;
-        grid-template-rows: 30vh 30vh 30fr 10fr;
-        grid-template-areas: "todo todo" "notes notes" "deadlines deadlines" "habits habits";
+    -ms-grid-rows: 5vh 30vh 30vh 30fr 10fr;
+        grid-template-rows: 5vh 30vh 30vh 30fr 10fr;
+        grid-template-areas: "date date" "todo todo" "notes notes" "deadlines deadlines" "habits habits";
   }
 }
 
@@ -337,10 +357,11 @@ a,
 
 .tui-full-calendar-dayname-container {
   height: 10vh;
+  cursor: pointer;
 }
 
 .todo_container {
-  -ms-grid-row: 1;
+  -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: todo;
   display: -ms-grid;
@@ -368,7 +389,7 @@ a,
 
 .deadlines_container {
   height: 500px;
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: deadlines;
@@ -378,7 +399,7 @@ a,
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  -ms-grid-row: 3;
+  -ms-grid-row: 4;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: habits;
