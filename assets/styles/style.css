@@ -1,6 +1,19 @@
 @font-face {
   font-family: 'Nunito';
+  font-weight: 400;
   src: local("Nunito"), url("../../fonts/Nunito/Nunito-Regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-weight: 300;
+  src: local("Nunito"), url("../../fonts/Nunito/Nunito-Light.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-weight: 700;
+  src: local("Nunito"), url("../../fonts/Nunito/Nunito-Bold.ttf") format("ttf");
 }
 
 @font-face {
@@ -258,14 +271,22 @@ a,
   border-radius: 10px;
 }
 
+#start {
+  height: 200px;
+  text-align: center;
+  display: none;
+  font-size: 3rem;
+  color: #f5b618;
+}
+
 #dashboard {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 50vw 50vw;
       grid-template-columns: 50vw 50vw;
-  -ms-grid-rows: 40vh 40vh;
-      grid-template-rows: 40vh 40vh;
-      grid-template-areas: "todo notes" "deadlines deadlines";
+  -ms-grid-rows: 40vh 40vh 10vh 10vh;
+      grid-template-rows: 40vh 40vh 10vh 10vh;
+      grid-template-areas: "todo notes" "deadlines deadlines" "habits habits";
 }
 
 @media (max-width: 800px) {
@@ -274,9 +295,9 @@ a,
     display: grid;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
-    -ms-grid-rows: 30vh 30vh 40fr;
-        grid-template-rows: 30vh 30vh 40fr;
-        grid-template-areas: "todo todo" "notes notes" "deadlines deadlines";
+    -ms-grid-rows: 30vh 30vh 30fr 10fr;
+        grid-template-rows: 30vh 30vh 30fr 10fr;
+        grid-template-areas: "todo todo" "notes notes" "deadlines deadlines" "habits habits";
   }
 }
 
@@ -346,6 +367,7 @@ a,
 }
 
 .deadlines_container {
+  height: 500px;
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
@@ -356,6 +378,9 @@ a,
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: habits;
 }
 
@@ -383,5 +408,9 @@ a,
   margin-right: auto;
   background: #f5b618;
   font-size: 16px;
+}
+
+.done {
+  color: #7d7987;
 }
 /*# sourceMappingURL=style.css.map */
