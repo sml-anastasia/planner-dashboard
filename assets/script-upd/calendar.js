@@ -13,6 +13,7 @@ let calendar = new tui.Calendar('#calendar', {
 };
 
 var myPlanner = [];
+let weekArray = document.getElementsByClassName('tui-full-calendar-dayname');
 
 if (!Date.prototype.toISODate) {
     Date.prototype.toISODate = function() {
@@ -65,3 +66,43 @@ function generateDashboard(date) {
     //document.getElementById('taskContainer').innerHTML = dashboardDiv;
     //document.getElementById('dashboard').setAttribute('date', date);
 }
+
+/*let weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+function addWeekDaysToCalendar() {
+    for (let w of weekArray) {
+        w[i].setAttribute('class', weekDays[i]);
+    }
+
+    //allHabits.find(x => x.date == date).habits.find(x => x.name == sender.name).checks.push(checkedArr);
+    //localStorage.setItem('habits', JSON.stringify(allHabits));
+}*/
+    
+
+window.addEventListener('load', function highlightDate(event) {
+    //console.log(d);
+    //console.log(weekArray);
+    console.log(weekArray[2].children[0].children[1].innerHTML);
+
+    /*let weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+    for (i = 0; i < weekArray.length; i++) {
+        weekArray[i].setAttribute("name", weekDays[i]);
+    }*/
+
+    for (i = 0; i < weekArray.length; i++) {
+        let wDate = weekArray[i].dataset.date;
+        //console.log(wDate);
+        if (wDate == date) {
+            //myPlanner.
+            console.log(myPlanner.find(x => x.date == date));
+            //myPlanner.find(x=>x.date==date).weekday = weekArray[i].children[0].children[1].innerHTML;
+            //console.log('gotcha')
+            //console.log(weekArray[i].children)
+            weekArray[i].children[0].style.color = 'orange';
+            //weekArray[i].children[0].style.fontWeight = 'bold';
+            console.log(weekArray[i].children[0].style.color);
+        }
+        //else console.log('fail');
+    }
+    //console.log('fail');
+    
+});

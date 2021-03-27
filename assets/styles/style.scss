@@ -49,6 +49,27 @@ a,
     border-radius: 10px;
 }
 
+#welcome {
+    width: 20em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $block_background;
+    border-radius: 100px;
+
+    h1 {
+        font-family: 'Playfair Display';
+        font-weight: 600;
+
+        margin-bottom: -10px;
+    }
+}
+
 #dashboard {
     display: grid;
     grid-template-columns: 60vw 40vw;
@@ -97,6 +118,7 @@ a,
 
 .tui-full-calendar-dayname-container {
     height: 10vh;
+    cursor: pointer;
 }
 
 .todo_container {
