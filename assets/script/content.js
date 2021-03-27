@@ -1,5 +1,3 @@
-// var Chart = require('chart.js');
-
 const todoInput = document.querySelector('.todo-name');
 const todoButton = document.querySelector('.todo-btn');
 const todoList = document.querySelector('.todo-list');
@@ -24,10 +22,11 @@ function addTodo(event) {
 
     let newTodoObj = {};
     let todoText = todoInput.value;
+    
     if (todoText == '') {
         return;
     } else {
-        newTodoObj.text = todoText;
+        newTodoObj.text = todoText.replace(/\s+/g,' ' ).replace(/^\s/,'').replace(/\s$/,'');
         newTodoObj.isDone = 0;
     }
     
@@ -45,7 +44,6 @@ function addTodo(event) {
                         habits: []});
             myPlanner.find(x=>x.date==date).todo.push(newTodoObj);
         }
-    console.log(newTodoObj);
     appendTodo();
 }
 
@@ -129,8 +127,6 @@ function deleteTodo(todoToDelete) {
     appendTodo();
 }
 
-
-
 // NOTES
 
 let modal = document.querySelector(".modal");
@@ -148,23 +144,23 @@ function addNote(event) {
 
     let newNote = {};
     
-    let title = document.querySelector("#add-box__note-title");
-    let note = document.querySelector("#add-box__note-input");
+    let title = document.querySelector("#add-box__note-title").value;
+    let note = document.querySelector("#add-box__note-input").value;
 
-    if (title.value == '' || note.value == '') {
-        return alert("Please, enter both fields");
+    if (title == '' || note == '') {
+        return document.getElementById('note-warning').style.display = 'block';
     } else {
-        newNote.title = title.value;
-        newNote.note = note.value;
+        newNote.title = title.replace(/\s+/g,' ' ).replace(/^\s/,'').replace(/\s$/,'');
+        newNote.note = note.replace(/\s+/g,' ' ).replace(/^\s/,'').replace(/\s$/,'');
+        title = '';
+        note = '';
     }
 
     let dateToAdd = myPlanner.find(x=>x.date==date);
-    if(dateToAdd!=undefined)
-    {
+    if(dateToAdd!=undefined) {
         myPlanner.find(x=>x.date==date).notes.push(newNote);
     }
-    else
-        {
+    else {
             myPlanner.push({date:date,
                         todo: [],
                         notes: [],
@@ -173,9 +169,6 @@ function addNote(event) {
             myPlanner.find(x=>x.date==date).notes.push(newNote);
             
         }
-    console.log(newNote);
-    title.value = '';
-    note.value = '';
     appendNotes();
     cancel.click();
 }
@@ -216,7 +209,6 @@ function getDeleteNoteButtons() {
     noteDeleteButtons.forEach(button => {
         let noteToDelete = button.previousSibling.previousSibling.innerText;
         button.addEventListener('click', () => {
-            
             deleteNote(noteToDelete);
         })
     })
@@ -231,35 +223,3 @@ function deleteNote(noteToDelete) {
     localStorage.setItem('planner', JSON.stringify(myPlanner));
     appendNotes();
 }
-
-///////////////////////
-
-// var ctx = document.getElementById('myChart');
-// var myChart = new Chart(ctx, {
-//     type: 'doughnut',
-//     data: {
-//         labels: ['Red', 'Blue'],
-//         datasets: [{
-//             label: '# of Votes',
-//             data: [12, 19],
-//             backgroundColor: [
-//                 'rgb(255, 99, 132)',
-//                 'rgb(54, 162, 235)'
-//             ],
-//             borderColor: [
-//                 'rgba(255, 99, 132, 1)',
-//                 'rgba(54, 162, 235, 1)'
-//             ],
-//             borderWidth: 1
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero: true
-//                 }
-//             }]
-//         }
-//     }
-// });

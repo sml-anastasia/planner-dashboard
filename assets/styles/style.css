@@ -1,24 +1,25 @@
 @font-face {
   font-family: 'Nunito';
   font-weight: 400;
-  src: local("Nunito"), url("../../fonts/Nunito/Nunito-Regular.ttf") format("ttf");
+  src: url("../../fonts/Nunito/Nunito-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: 'Nunito';
   font-weight: 300;
-  src: local("Nunito"), url("../../fonts/Nunito/Nunito-Light.ttf") format("ttf");
+  src: url("../../fonts/Nunito/Nunito-Light.ttf") format("truetype");
 }
 
 @font-face {
   font-family: 'Nunito';
   font-weight: 700;
-  src: local("Nunito"), url("../../fonts/Nunito/Nunito-Bold.ttf") format("ttf");
+  src: url("../../fonts/Nunito/Nunito-Bold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Playfair Display';
-  src: local("Playfair Display"), url("../../fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf") format("ttf");
+  font-family: 'DM Serif Display';
+  font-weight: 400;
+  src: url("../../fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf") format("truetype");
 }
 
 #add-box__note-title {
@@ -42,7 +43,7 @@
 }
 
 .add-box__title {
-  font-family: "Playfair Display", serif;
+  font-family: "DM Serif Display", serif;
   font-weight: normal;
   font-style: normal;
   font-size: 3rem;
@@ -147,12 +148,17 @@
 
 .note-delete {
   margin-left: auto;
+  padding-right: 2rem;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: ndelete;
+}
+
+#note-warning {
+  display: none;
 }
 
 .habit_box {
@@ -213,7 +219,7 @@
 }
 
 .todo-name {
-  width: 100px;
+  width: auto;
   border: none;
   border-bottom: 1px solid #7d7987;
 }
@@ -233,23 +239,29 @@
   grid-area: form;
 }
 
+.delete-btn {
+  margin-right: 2rem;
+}
+
 * {
   font-family: "Nunito", sans-serif;
   font-weight: 300;
+  font-size: 1rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
 body {
-  max-width: 1440px;
+  width: 100%;
   margin: 0;
   background-color: #fff0df;
   color: #1f1f1f;
 }
 
 h2 {
-  font-family: "Playfair Display", serif;
+  font-family: "DM Serif Display", serif;
   font-weight: 400;
+  font-size: 1.5rem;
 }
 
 a {
@@ -290,9 +302,9 @@ a,
   display: grid;
   -ms-grid-columns: 50vw 50vw;
       grid-template-columns: 50vw 50vw;
-  -ms-grid-rows: 5vh 40vh 40vh 10vh 10vh;
-      grid-template-rows: 5vh 40vh 40vh 10vh 10vh;
-      grid-template-areas: "date date" "todo notes" "deadlines deadlines" "habits habits";
+  -ms-grid-rows: 5% 40% 40%;
+      grid-template-rows: 5% 40% 40%;
+      grid-template-areas: "date date" "todo notes" "chart chart";
 }
 
 #date-container {
@@ -300,6 +312,7 @@ a,
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: date;
+  width: 30rem;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -307,24 +320,15 @@ a,
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  justify-self: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #fffffe;
+  border-radius: 8px;
+  background-color: #5791b8;
   font-size: 160%;
   font-weight: 500;
-}
-
-@media (max-width: 800px) {
-  #dashboard {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-    -ms-grid-rows: 5vh 30vh 30vh 30fr 10fr;
-        grid-template-rows: 5vh 30vh 30vh 30fr 10fr;
-        grid-template-areas: "date date" "todo todo" "notes notes" "deadlines deadlines" "habits habits";
-  }
+  color: #fffffe;
 }
 
 .container {
@@ -389,26 +393,12 @@ a,
       grid-template-areas: 'title btn' 'notes notes';
 }
 
-.grafic_container {
-  grid-area: grafic;
-}
-
-.deadlines_container {
+.chart_container {
   height: 500px;
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
-  grid-area: deadlines;
-}
-
-.habits_container {
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-  -ms-grid-row: 4;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-area: habits;
+  grid-area: chart;
 }
 
 .ui-btn {
@@ -440,5 +430,26 @@ a,
 .done {
   text-decoration: line-through;
   color: #7d7987;
+}
+
+.move-day {
+  background-color: #f5b618;
+  border: none;
+  border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+  #dashboard {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 5vh 30vh 30vh 30fr 10fr;
+        grid-template-rows: 5vh 30vh 30vh 30fr 10fr;
+        grid-template-areas: "date date" "todo todo" "notes notes" "chart chart";
+  }
+  .todo-name {
+    width: 110px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

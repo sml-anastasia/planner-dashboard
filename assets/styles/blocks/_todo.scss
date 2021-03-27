@@ -28,7 +28,7 @@
 }
 
 .todo-name {
-    width: 100px;
+    width: auto;
     border: none;
     border-bottom: 1px solid #7d7987;
 }
@@ -41,4 +41,8 @@
 .todo__form {
     align-self: center;
     grid-area: form;
+}
+
+.delete-btn {
+    margin-right: 2rem;
 }

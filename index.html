@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/styles/style.css">
-    <title>Planner Dashboard</title>
+    <title>Planner Dashboard copy</title>
 </head>
 
 <body>
@@ -33,40 +33,66 @@
             <div id="calendar"></div>
         </div>
 
+        <p id="start">
+            Please, choose date
+        </p>
         <div id="dashboard">
-
-            <!-- <div class="todo_container container">
-        <h2 class="todo_container__header">To-do</h2>
-    </div> -->
-            <!-- <section class="notes_container container">
+            <div id="date-container"></div>
+            <section class="todo_container container">
+                <h2 class="todo_container__header">To-do</h2>
+                <div class="todo__form">
+                    <form>
+                        <input type="text" class="todo-name" placeholder="write your task">
+                        <button type="submit" name="submit" class="ui-btn todo-btn">
+                            add task
+                        </button>
+                    </form>
+                </div>
+                <div class="todo_box">
+                    <div id="todo-warning"></div>
+                    <ul class="todo-list"></ul>
+                </div>
+            </section>
+            <section class="notes_container container">
                 <h2 class="notes_container__header">Notes</h2>
-                <div id="add-box__button">
-                    <a href="#myModal" class="btn__link">+</a>
+                <div id="add-box__button" class="ui-btn add-box__button">
+                    <a href="#myModal" class="btn__link">new note</a>
                 </div>
                 <div id="notes"></div>
             </section>
             <div id="myModal" class="modal">
                 <div class="modal-content">
                     <form class="noteForm">
-                        <input name="note-title" id="add-box__note-title" placeholder="title"></input>
-                        <textarea name="note" id="add-box__note-input" placeholder="write down your note"></textarea>
-                        <button type="submit" name="submit" class="submit">add</button>
+                        <input name="note-title" id="add-box__note-title" placeholder="note title"></input>
+                        <p>max 150 symbols</p>
+                        <p id="note-warning">Please, enter both fields</p>
+                        <textarea name="note" id="add-box__note-input" placeholder="write down your note"
+                            maxlength="150"></textarea>
+                        <button type="submit" name="submit" class="ui-btn note-submit"><span
+                                class="btn__link">add</span></button>
                         <div>
                             <a href="#close" class="cancel">cancel</a>
                         </div>
                     </form>
                 </div>
-            </div> -->
-            <div class="deadlines_container container">
-                <h2 class="deadlines_container__header">Deadlines</h2>
             </div>
-            <div class="habits_container container">
+            <section class="chart_container container">
+                <h2 class="chart_container__header">Daily progress</h2>
+                <canvas id="myChart" height="100px"></canvas>
+
+            </section>
+            <!-- <section class="habits_container container">
                 <h2 class="habits_container__header">Habits</h2>
-            </div>
+                <div class="habit_tracker_wrap">
+                    <input type="text" id="habit_input" placeholder="Add habit here">
+                    <button id="add_habit" onclick="addHabit()">+ habit</button>
+                    <div id="habit_box" class="habit_box"></div>
+                </div>
+            </section> -->
         </div>
     </main>
 
-    <!-- <script src="assets/script/index-notes.js"></script> -->
+
     <script src="https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js"></script>
     <script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script>
     <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.js"></script>
@@ -74,7 +100,10 @@
     <script src="https://cdn.rawgit.com/dropbox/zxcvbn/v1.0/zxcvbn.js"></script>
     <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.6.1/dist/progressbar.js"></script>
 
+
     <script src="assets/script/calendar.js"></script>
+    <script src="assets/script/content.js"></script>
+    <script src="assets/script/bundle.js"></script>
 </body>
 
 </html>
