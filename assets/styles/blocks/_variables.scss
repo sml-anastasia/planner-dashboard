@@ -3,34 +3,44 @@
 @font-face {
     font-family: 'Nunito';
     font-weight: 400;
-    src: url('../../fonts/Nunito/Nunito-Regular.ttf') format('truetype');
+    src: url('../../assets/fonts/Nunito/Nunito-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Nunito';
     font-weight: 300;
-    src: url('../../fonts/Nunito/Nunito-Light.ttf') format('truetype');
+    src: url('../../assets/fonts/Nunito/Nunito-Light.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Nunito';
     font-weight: 700;
-    src: url('../../fonts/Nunito/Nunito-Bold.ttf') format('truetype');
+    src: url('../../assets/fonts/Nunito/Nunito-Bold.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'DM Serif Display';
+    font-family: 'Playfair Display';
     font-weight: 400;
-    src: url('../../fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf') format('truetype');
+    src: url('../../assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Shadows Into Light';
+    font-weight: 400;
+    src: url('../../assets/fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf') format('truetype');
 }
 
 $defaultFont: 'Nunito',
 sans-serif;
-$titleFont: 'DM Serif Display',
+$titleFont: 'Playfair Display',
 serif;
-
+$headtitleFont: 'Shadows Into Light',
+cursive;
 $body_background: rgb(255, 240, 223);
 $header_background: rgb(245, 182, 24);
 $block_background: rgb(255, 255, 254);
 
 $text_color: rgb(31, 31, 31);
+$light_color: rgb(249, 249, 251);
+$gray_color: rgb(125, 121, 135);
+$accent_color: rgba(87, 145, 184, 1);

@@ -3,8 +3,8 @@
     margin-bottom: 5%;
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid #f9f9fb;
-    color: #f9f9fb;
+    border-bottom: 2px solid $light_color;
+    color: $light_color;
 }
 
 #add-box__note-input {
@@ -12,10 +12,10 @@
     height: 5rem;
     margin-bottom: 5%;
     background-color: transparent;
-    border: 2px dashed #f9f9fb;
+    border: 2px dashed $light_color;
     border-radius: 8px;
     overflow-y: scroll;
-    color: #f9f9fb;
+    color: $light_color;
 }
 
 .add-box__title {
@@ -23,7 +23,7 @@
     font-weight: normal;
     font-style: normal;
     font-size: 3rem;
-    color: #f9f9fb;
+    color: $light_color;
 }
 
 .btn__link {
@@ -33,7 +33,7 @@
 #notes {
     width: 100%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     grid-area: notes;
     overflow: scroll;
 }
