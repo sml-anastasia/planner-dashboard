@@ -1,25 +1,31 @@
 @font-face {
   font-family: 'Nunito';
   font-weight: 400;
-  src: url("../../fonts/Nunito/Nunito-Regular.ttf") format("truetype");
+  src: url("../../assets/fonts/Nunito/Nunito-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: 'Nunito';
   font-weight: 300;
-  src: url("../../fonts/Nunito/Nunito-Light.ttf") format("truetype");
+  src: url("../../assets/fonts/Nunito/Nunito-Light.ttf") format("truetype");
 }
 
 @font-face {
   font-family: 'Nunito';
   font-weight: 700;
-  src: url("../../fonts/Nunito/Nunito-Bold.ttf") format("truetype");
+  src: url("../../assets/fonts/Nunito/Nunito-Bold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'DM Serif Display';
+  font-family: 'Playfair Display';
   font-weight: 400;
-  src: url("../../fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf") format("truetype");
+  src: url("../../assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Shadows Into Light';
+  font-weight: 400;
+  src: url("../../assets/fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf") format("truetype");
 }
 
 #add-box__note-title {
@@ -43,7 +49,7 @@
 }
 
 .add-box__title {
-  font-family: "DM Serif Display", serif;
+  font-family: "Playfair Display", serif;
   font-weight: normal;
   font-style: normal;
   font-size: 3rem;
@@ -60,9 +66,9 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
@@ -203,7 +209,7 @@
 .todo {
   margin: 5px auto;
   background: white;
-  color: #000000;
+  color: #1f1f1f;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -259,7 +265,7 @@ body {
 }
 
 h2 {
-  font-family: "DM Serif Display", serif;
+  font-family: "Playfair Display", serif;
   font-weight: 400;
   font-size: 1.5rem;
 }
@@ -278,8 +284,15 @@ a,
 
 .header_container {
   text-align: center;
-  padding: 2em 0 2em 0;
+  padding: 0.5em 0 0.5em 0;
   background-color: #f5b618;
+}
+
+.head-title {
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #fff0df;
 }
 
 .header_container__item {
@@ -312,7 +325,7 @@ a,
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: date;
-  width: 30rem;
+  width: 10rem;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -325,10 +338,10 @@ a,
       -ms-flex-align: center;
           align-items: center;
   border-radius: 8px;
-  background-color: #5791b8;
-  font-size: 160%;
+  color: #5791b8;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 2rem;
   font-weight: 500;
-  color: #fffffe;
 }
 
 .container {
@@ -450,6 +463,13 @@ a,
   }
   .todo-name {
     width: 110px;
+  }
+  #date-container {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: date;
+    width: 10rem;
   }
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,8 +1,8 @@
 const todoInput = document.querySelector('.todo-name');
 const todoButton = document.querySelector('.todo-btn');
 const todoList = document.querySelector('.todo-list');
+const todoWarning = document.querySelector('#todo-warning');
 let todoDeleteButtons;
-// const todoWarning = document.querySelector('#todo-warning');
 
 todoButton.addEventListener("click", addTodo);
 
@@ -16,21 +16,31 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 let date = getParameterByName('date');
+let dateToAdd = myPlanner.find(x=>x.date==date);
 
 function addTodo(event) {
     event.preventDefault();
-
     let newTodoObj = {};
-    let todoText = todoInput.value;
-    
+    let todoText = todoInput.value.replace(/\s+/g, ' ').replace(/^\s/, '').replace(/\s$/, '');
     if (todoText == '') {
         return;
     } else {
-        newTodoObj.text = todoText.replace(/\s+/g,' ' ).replace(/^\s/,'').replace(/\s$/,'');
-        newTodoObj.isDone = 0;
-    }
-    
-    let dateToAdd = myPlanner.find(x=>x.date==date);
+        if (myPlanner.find(x => x.date == date)) {
+            if (myPlanner.find(x => x.date == date).todo.find(x => x.text == todoText)) {
+                todoWarning.innerHTML = 'exists';
+                return
+            }
+            else {
+                todoWarning.innerHTML = '';
+                newTodoObj.text = todoText;
+                newTodoObj.isDone = 0;
+            }
+        } else {
+                newTodoObj.text = todoText;
+                newTodoObj.isDone = 0;
+            }
+        }
+    // let dateToAdd = myPlanner.find(x=>x.date==date);
     if(dateToAdd!=undefined)
     {
         myPlanner.find(x=>x.date==date).todo.push(newTodoObj);
@@ -156,7 +166,7 @@ function addNote(event) {
         note = '';
     }
 
-    let dateToAdd = myPlanner.find(x=>x.date==date);
+    // let dateToAdd = myPlanner.find(x=>x.date==date);
     if(dateToAdd!=undefined) {
         myPlanner.find(x=>x.date==date).notes.push(newNote);
     }

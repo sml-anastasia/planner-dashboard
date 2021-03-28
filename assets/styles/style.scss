@@ -38,9 +38,16 @@ a,
 
 .header_container {
     text-align: center;
-    padding: 2em 0 2em 0;
+    padding: 0.5em 0 0.5em 0;
 
     background-color: $header_background;
+}
+
+.head-title {
+    font-family: $headtitleFont;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: $body_background;
 }
 
 .header_container__item {
@@ -71,7 +78,7 @@ a,
 
 #date-container {
     grid-area: date;
-    width: 30rem;
+    width: 10rem;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -79,11 +86,11 @@ a,
     align-items: center;
 
     border-radius: 8px;
-    background-color: rgba(87, 145, 184, 1);
+    color: $accent_color;
 
-    font-size: 160%;
+    font-family: $headtitleFont;
+    font-size: 2rem;
     font-weight: 500;
-    color: $block_background;
 }
 
 .container {
@@ -162,8 +169,8 @@ a,
     font-weight: 600;
     font-style: normal;
     font-size: 1rem;
-    background: #f9f9fb;
-    color: #7d7987;
+    background: $light_color;
+    color: $gray_color;
 }
 
 .todo-btn {
@@ -175,7 +182,7 @@ a,
 
 .done {
     text-decoration: line-through;
-    color: #7d7987;
+    color: $gray_color;
 }
 
 .move-day {
@@ -198,5 +205,10 @@ a,
 
     .todo-name {
         width: 110px;
+    }
+
+    #date-container {
+        grid-area: date;
+        width: 10rem;
     }
 }
