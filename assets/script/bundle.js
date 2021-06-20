@@ -1,4 +1,18 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+class Helper {
+    static getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+}
+
+module.exports = Helper;
+},{}],2:[function(require,module,exports){
+let Helper = require('./helper.js');
 var Chart = require('chart.js');
 var ctx = document.getElementById('myChart');
 
@@ -7,7 +21,7 @@ let complete = 0;
 let notComplete = 0;
 let plannerChecks;
 document.addEventListener("DOMContentLoaded", function (event) {
-    let today = getParameterByName('date');
+    let today = Helper.getParameterByName('date');
     plannerChecks= JSON.parse(localStorage.getItem('planner'));
     
     if (plannerChecks != null) {
@@ -54,15 +68,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
 });
 
-function getParameterByName(name, url = window.location.href) {
-    name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
-},{"chart.js":2}],2:[function(require,module,exports){
+// function getParameterByName(name, url = window.location.href) {
+//     name = name.replace(/[\[\]]/g, '\\$&');
+//     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+//         results = regex.exec(url);
+//     if (!results) return null;
+//     if (!results[2]) return '';
+//     return decodeURIComponent(results[2].replace(/\+/g, ' '));
+// }
+},{"./helper.js":1,"chart.js":3}],3:[function(require,module,exports){
 /*!
  * Chart.js v2.9.4
  * https://www.chartjs.org
@@ -16236,7 +16250,7 @@ return src;
 
 })));
 
-},{"moment":3}],3:[function(require,module,exports){
+},{"moment":4}],4:[function(require,module,exports){
 //! moment.js
 //! version : 2.29.1
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -21908,4 +21922,4 @@ return src;
 
 })));
 
-},{}]},{},[1]);
+},{}]},{},[2]);

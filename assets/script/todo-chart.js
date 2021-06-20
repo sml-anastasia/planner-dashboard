@@ -1,3 +1,4 @@
+let Helper = require('./helper.js');
 var Chart = require('chart.js');
 var ctx = document.getElementById('myChart');
 
@@ -6,7 +7,7 @@ let complete = 0;
 let notComplete = 0;
 let plannerChecks;
 document.addEventListener("DOMContentLoaded", function (event) {
-    let today = getParameterByName('date');
+    let today = Helper.getParameterByName('date');
     plannerChecks= JSON.parse(localStorage.getItem('planner'));
     
     if (plannerChecks != null) {
@@ -53,11 +54,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
 });
 
-function getParameterByName(name, url = window.location.href) {
-    name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
+// function getParameterByName(name, url = window.location.href) {
+//     name = name.replace(/[\[\]]/g, '\\$&');
+//     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+//         results = regex.exec(url);
+//     if (!results) return null;
+//     if (!results[2]) return '';
+//     return decodeURIComponent(results[2].replace(/\+/g, ' '));
+// }

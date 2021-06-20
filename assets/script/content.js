@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 
-let date = getParameterByName('date');
+let date = Helper.getParameterByName('date');
 let dateToAdd = myPlanner.find(x=>x.date==date);
 
 function addTodo(event) {
