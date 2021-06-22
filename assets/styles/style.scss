@@ -6,11 +6,12 @@
 * {
     font-family: $defaultFont;
     font-weight: 300;
+    font-size: 1rem;
     box-sizing: border-box;
 }
 
 body {
-    max-width: 1440px;
+    width: 100%;
     margin: 0;
 
     background-color: $body_background;
@@ -20,6 +21,7 @@ body {
 h2 {
     font-family: $titleFont;
     font-weight: 400;
+    font-size: 1.5rem;
 }
 
 a {
@@ -36,9 +38,16 @@ a,
 
 .header_container {
     text-align: center;
-    padding: 2em 0 2em 0;
+    padding: 0.5em 0 0.5em 0;
 
     background-color: $header_background;
+}
+
+.head-title {
+    font-family: $headtitleFont;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: $body_background;
 }
 
 .header_container__item {
@@ -60,39 +69,28 @@ a,
 #dashboard {
     display: grid;
     grid-template-columns: 50vw 50vw;
-    grid-template-rows: 5vh 40vh 40vh 10vh 10vh;
+    grid-template-rows: 5% 40% 40%;
     grid-template-areas:
         "date date"
         "todo notes"
-        "deadlines deadlines"
-        "habits habits";
+        "chart chart";
 }
 
 #date-container {
     grid-area: date;
+    width: 10rem;
     height: 100%;
     display: flex;
     justify-content: center;
+    justify-self: center;
     align-items: center;
 
-    background-color: $block_background;
+    border-radius: 8px;
+    color: $accent_color;
 
-    font-size: 160%;
+    font-family: $headtitleFont;
+    font-size: 2rem;
     font-weight: 500;
-}
-
-@media (max-width: 800px) {
-    #dashboard {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 5vh 30vh 30vh 30fr 10fr;
-        grid-template-areas: 
-            "date date"
-            "todo todo"
-            "notes notes"
-            "deadlines deadlines"
-            "habits habits";
-    }
 }
 
 .container {
@@ -148,19 +146,15 @@ a,
         'notes notes';
 }
 
-.grafic_container {
-    grid-area: grafic;
-}
-
-.deadlines_container {
+.chart_container {
     height: 500px;
-    grid-area: deadlines;
+    grid-area: chart;
 }
 
-.habits_container {
-    height: max-content;
-    grid-area: habits;
-}
+// .habits_container {
+//     height: max-content;
+//     grid-area: habits;
+// }
 
 .ui-btn {
     width: 5rem;
@@ -175,8 +169,8 @@ a,
     font-weight: 600;
     font-style: normal;
     font-size: 1rem;
-    background: #f9f9fb;
-    color: #7d7987;
+    background: $light_color;
+    color: $gray_color;
 }
 
 .todo-btn {
@@ -187,5 +181,34 @@ a,
 }
 
 .done {
-    color: #7d7987;
+    text-decoration: line-through;
+    color: $gray_color;
+}
+
+.move-day {
+    background-color: $header_background;
+    border: none;
+    border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+    #dashboard {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 5vh 30vh 30vh 30fr 10fr;
+        grid-template-areas:
+            "date date"
+            "todo todo"
+            "notes notes"
+            "chart chart";
+    }
+
+    .todo-name {
+        width: 110px;
+    }
+
+    #date-container {
+        grid-area: date;
+        width: 10rem;
+    }
 }

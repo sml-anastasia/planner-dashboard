@@ -19,7 +19,7 @@
 .todo {
     margin: 5px auto;
     background: white;
-    color: #000000;
+    color: $text_color;
     display: flex;
     flex-direction: row;
     font-size: 1.2rem;
@@ -28,9 +28,9 @@
 }
 
 .todo-name {
-    width: 100px;
+    width: auto;
     border: none;
-    border-bottom: 1px solid #7d7987;
+    border-bottom: 1px solid $gray_color;
 }
 
 .todo-item {
@@ -41,4 +41,8 @@
 .todo__form {
     align-self: center;
     grid-area: form;
+}
+
+.delete-btn {
+    margin-right: 2rem;
 }
