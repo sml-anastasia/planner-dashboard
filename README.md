@@ -4,6 +4,7 @@
 - календарь с возможностью выбора даты
 - две основные секции: список заданий и заметки
 - диаграмма выполненных заданий
+
 Технологии: HTML5, CSS3, JavaScript  
 
 ![planner-dashboard-1](https://user-images.githubusercontent.com/71700969/124923287-f59a0400-e002-11eb-878d-f12a8b3a95e3.png)
